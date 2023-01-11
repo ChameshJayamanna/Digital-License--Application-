@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "614148719914",
+    "firebase_url": "https://digital-license-67170-default-rtdb.firebaseio.com",
+    "project_id": "digital-license-67170",
+    "storage_bucket": "digital-license-67170.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614148719914:android:684a7ccc7fb4700f7d8a53",
+        "android_client_info": {
+          "package_name": "com.example.digitallicense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614148719914-8n90jlsmhnvv3notdsrne36fmf1c3aug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQCGpCP_7f856Yr2YELxRpehRxIRboYyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614148719914-8n90jlsmhnvv3notdsrne36fmf1c3aug.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "614148719914-hq04qfu6cur8huf48tig4tejosvj68i9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.digitallicense"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614148719914:android:66491790954301fa7d8a53",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614148719914-8n90jlsmhnvv3notdsrne36fmf1c3aug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQCGpCP_7f856Yr2YELxRpehRxIRboYyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614148719914-8n90jlsmhnvv3notdsrne36fmf1c3aug.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "614148719914-hq04qfu6cur8huf48tig4tejosvj68i9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.digitallicense"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

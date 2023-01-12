@@ -21,7 +21,6 @@ import 'package:flutter/material.dart'
         Column,
         Container,
         CrossAxisAlignment,
-        DropdownMenuItem,
         EdgeInsets,
         ElevatedButton,
         FlatButton,
@@ -87,30 +86,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   // final List<String> commonValues = ["AS", "Chief Inspector", "DIG","IG","Inspector","PSClass1","PSClass2","PSClass3","PSClass4"
   //,"SDIG","SI","SS","Sergeant Major","Super Intendent","Traffic"];
-  List<DropdownMenuItem<String>> get dropdownItems {
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("AS"), value: "AS"),
-      DropdownMenuItem(
-          child: Text("Chief Inspector"), value: "Chief Inspector"),
-      DropdownMenuItem(child: Text("DIG"), value: "DIG"),
-      DropdownMenuItem(child: Text("IG"), value: "IG"),
-      DropdownMenuItem(child: Text("Inspector"), value: "Inspector"),
-      DropdownMenuItem(child: Text("PSClass1"), value: "PSClass1"),
-      DropdownMenuItem(child: Text("PSClass2"), value: "PSClass2"),
-      DropdownMenuItem(child: Text("PSClass3"), value: "PSClass3"),
-      DropdownMenuItem(child: Text("PSClass4"), value: "PSClass4"),
-      DropdownMenuItem(child: Text("SDIG"), value: "SDIG"),
-      DropdownMenuItem(child: Text("SI"), value: "SI"),
-      DropdownMenuItem(child: Text("SS"), value: "SS"),
-      DropdownMenuItem(child: Text("Sergeant Major"), value: "Sergeant Major"),
-      DropdownMenuItem(
-          child: Text("Super Intendent"), value: "Super Intendent"),
-      DropdownMenuItem(child: Text("Traffic"), value: "Traffic"),
-    ];
-    return menuItems;
-  }
 
-  String? menuItems;
   /*late String nic, password;
 
   getNIC(nic) {
@@ -275,12 +251,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                     icon: isPasswordVisble
                                         ? Icon(
                                             Icons.visibility_off_rounded,
-                                            color:
-                                                Color.fromARGB(255, 12, 12, 12),
+                                            color: Color.fromARGB(
+                                                255, 124, 124, 124),
                                           )
                                         : Icon(
                                             Icons.visibility,
-                                            color: Color.fromARGB(255, 8, 8, 8),
+                                            color: Color.fromARGB(
+                                                255, 124, 124, 124),
                                           ),
                                     onPressed: () => setState(() =>
                                         isPasswordVisble = !isPasswordVisble),
@@ -525,7 +502,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     isLoading = false;
                                                     isResend = false;
                                                   }),
-
                                                   Navigator.pushAndRemoveUntil(
                                                     context,
                                                     MaterialPageRoute(
@@ -662,27 +638,12 @@ class _LoginScreenState extends State<LoginScreen> {
             .then((result) {
           if (result.docs.length > 0) {
             isValidUser = true;
-          } /*else {
-            // Data is not present in 'Local' collection.
-            // Check 'Non-Local' collection for the data.
-            await _firestore
-                .collection('Police')
-                .doc('Rank')
-                .collection(menuItems!)
-                .where('Phone Number', isEqualTo: number)
-                .get()
-                .then((result) {
-              if (result.docs.length > 0) {
-                isValidUser = true;
-              }
-            });
-          }*/
+          }
         });
       }
     });
 
     if (isValidUser) {
-      //else
       //ok, we have a valid user, now lets do otp verification
       var verifyPhoneNumber = _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,

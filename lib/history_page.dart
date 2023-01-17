@@ -1,9 +1,13 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_2/police_profile.dart';
 import 'package:flutter_application_2/profile_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class history extends StatefulWidget {
   const history({Key? key}) : super(key: key);
@@ -45,7 +49,7 @@ class _historyState extends State<history> {
   ];
   String? selectedValue;
 
-  late String driverNIC, policeNIC, severity, description;
+  late String driverNIC, policeNIC, severity, description, mobile;
 
   getDriverNIC(driverNIC) {
     this.driverNIC = driverNIC;
@@ -59,14 +63,19 @@ class _historyState extends State<history> {
     this.description = description;
   }
 
+  getmobile(mobile) {
+    this.mobile = mobile;
+  }
+
   createData() {
     print("Submitted");
 
     final data = <String, dynamic>{
       "DriverNIC": driverNIC,
       "PoliceNIC": policeNIC,
+      "Phone Number": mobile,
       "Severity": selectedValue,
-      "Description": description
+      "Description": description,
     };
 
     DocumentReference documentReference =
@@ -76,8 +85,9 @@ class _historyState extends State<history> {
     Map<String, dynamic> drivers = {
       "DriverNIC": driverNIC,
       "PoliceNIC": policeNIC,
+      "Phone Number": mobile,
       "Severity": selectedValue,
-      "Description": description
+      "Description": description,
     };
 
     documentReference.set(drivers).whenComplete(() {
@@ -99,7 +109,7 @@ class _historyState extends State<history> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const Profilepage()));
+                        builder: (context) => const Policeprofile()));
               },
             );
           },
@@ -184,6 +194,17 @@ class _historyState extends State<history> {
                                     ),
                                     onChanged: (String policeNIC) {
                                       getPoliceNIC(policeNIC);
+                                    }),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Phone Number',
+                                      labelText: 'Phone Number',
+                                    ),
+                                    onChanged: (String phnumber) {
+                                      getmobile(phnumber);
                                     }),
                               ),
                               Container(

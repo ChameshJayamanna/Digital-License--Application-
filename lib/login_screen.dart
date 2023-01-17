@@ -58,6 +58,7 @@ import 'package:flutter/material.dart'
         Widget;
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/driver_or_police.dart';
+import 'package:flutter_application_2/foreign_profile.dart';
 import 'package:flutter_application_2/police_profile.dart';
 import 'package:flutter_application_2/profile_page.dart';
 import 'package:flutter_application_2/sign_up.dart';
@@ -173,11 +174,19 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
   }
 
-  Widget build(BuildContext context) {
-    return isOTPScreen ? returnOTPScreen() : returnLoginScreen();
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    phoneController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   bool isRememberMe = false;
+
+  Widget build(BuildContext context) {
+    return isOTPScreen ? returnOTPScreen() : returnLoginScreen();
+  }
 
   Widget returnLoginScreen() {
     return Scaffold(
@@ -502,15 +511,45 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     isLoading = false;
                                                     isResend = false;
                                                   }),
-                                                  Navigator.pushAndRemoveUntil(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          Profilepage(), //profile
-                                                    ),
-                                                    (route) => false,
-                                                  )
+                                                  if (isValidUser)
+                                                    {
+                                                      Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              Profilepage(), //profile
+                                                        ),
+                                                        (route) => false,
+                                                      )
+                                                    }
+                                                  else if (isValidUser1)
+                                                    {
+                                                      Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              Foreignprofile(),
+                                                        ),
+                                                        (route) => false,
+                                                      ),
+                                                    }
+                                                  else
+                                                    {
+                                                      Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              Policeprofile(),
+                                                        ),
+                                                        (route) => false,
+                                                      ),
+                                                    }
                                                 }
                                             })
                                         .catchError((error) => {
@@ -605,6 +644,10 @@ class _LoginScreenState extends State<LoginScreen> {
     _scaffoldKey.currentState!.showSnackBar(snackBar);
   }
 
+  var isValidUser = false;
+  var isValidUser1 = false;
+  var isValidUser2 = false;
+
   Future login() async {
     setState(() {
       isLoading = true;
@@ -613,8 +656,9 @@ class _LoginScreenState extends State<LoginScreen> {
     var phoneNumber = '+94 ' + phoneController.text.trim();
 
     //first we will check if a user with this cell number exists
-    var isValidUser = false;
+
     var number = phoneController.text.trim();
+    var password = passwordController.text.trim();
     //var password = passwordController.text.trim();
 
     await _firestore
@@ -622,6 +666,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .doc('Nativity')
         .collection('Local')
         .where('Phone Number', isEqualTo: number)
+        .where('Password', isEqualTo: password)
         .get() //.where('Password', isEqualTo:  password)
         .then((result) async {
       if (result.docs.length > 0) {
@@ -634,10 +679,44 @@ class _LoginScreenState extends State<LoginScreen> {
             .doc('Nativity')
             .collection('Foreign')
             .where('Phone Number', isEqualTo: number)
+            .where('Password', isEqualTo: password)
             .get()
-            .then((result) {
+            .then((result) async {
           if (result.docs.length > 0) {
-            isValidUser = true;
+            isValidUser1 = true;
+          } else {
+            List<String> collectionNames = [
+              "AS",
+              "ChiefInspector",
+              "DIG",
+              "IG",
+              "Inspector",
+              "PSClass1",
+              "PSClass2",
+              "PSClass3",
+              "PSClass4",
+              "SDIG",
+              "SI",
+              "SS",
+              "SergeantMajor",
+              "SuperIntendent"
+            ];
+            for (String collectionName in collectionNames) {
+              // Data is not present in 'Local' collection.
+              // Check 'Non-Local' collection for the data.
+              await _firestore
+                  .collection('Police')
+                  .doc('Rank')
+                  .collection(collectionName)
+                  .where('PhoneNumber', isEqualTo: number)
+                  .where('Password', isEqualTo: password)
+                  .get()
+                  .then((result) async {
+                if (result.docs.length > 0) {
+                  isValidUser2 = true;
+                }
+              });
+            }
           }
         });
       }
@@ -689,15 +768,108 @@ class _LoginScreenState extends State<LoginScreen> {
         timeout: Duration(seconds: 60),
       );
       await verifyPhoneNumber;
+    } else if (isValidUser1) {
+      //ok, we have a valid user, now lets do otp verification
+      var verifyPhoneNumber = _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (phoneAuthCredential) {
+          //auto code complete (not manually)
+          _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
+                if (user != null)
+                  {
+                    //redirect
+                    setState(() {
+                      isLoading = false;
+                      isOTPScreen = false;
+                    }),
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => Foreignprofile(),
+                      ),
+                      (route) => false,
+                    )
+                  }
+              });
+        },
+        verificationFailed: (FirebaseAuthException error) {
+          displaySnackBar('Validation error, please try again later');
+          setState(() {
+            isLoading = false;
+          });
+        },
+        codeSent: (verificationId, [forceResendingToken]) {
+          setState(() {
+            isLoading = false;
+            verificationCode = verificationId;
+            isOTPScreen = true;
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          setState(() {
+            isLoading = false;
+            verificationCode = verificationId;
+          });
+        },
+        timeout: Duration(seconds: 60),
+      );
+      await verifyPhoneNumber;
+    } else if (isValidUser2) {
+      //ok, we have a valid user, now lets do otp verification
+      var verifyPhoneNumber = _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (phoneAuthCredential) {
+          //auto code complete (not manually)
+          _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
+                if (user != null)
+                  {
+                    //redirect
+                    setState(() {
+                      isLoading = false;
+                      isOTPScreen = false;
+                    }),
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => Policeprofile(),
+                      ),
+                      (route) => false,
+                    )
+                  }
+              });
+        },
+        verificationFailed: (FirebaseAuthException error) {
+          displaySnackBar('Validation error, please try again later');
+          setState(() {
+            isLoading = false;
+          });
+        },
+        codeSent: (verificationId, [forceResendingToken]) {
+          setState(() {
+            isLoading = false;
+            verificationCode = verificationId;
+            isOTPScreen = true;
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          setState(() {
+            isLoading = false;
+            verificationCode = verificationId;
+          });
+        },
+        timeout: Duration(seconds: 60),
+      );
+      await verifyPhoneNumber;
     } else {
       //non valid user
       setState(() {
         isLoading = false;
       });
       displaySnackBar(
-          'Number not found, please sign up first'); //else (incorrect password)
+          'Number or Password not found, please sign up first'); //else (incorrect password)
     }
   }
+}
 
   /*Widget bulidLoadingButton(bool isDone) {
     final color = isDone ? Colors.green : Color.fromARGB(255, 50, 50, 50);
@@ -718,4 +890,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }*/
-}
+  
+  

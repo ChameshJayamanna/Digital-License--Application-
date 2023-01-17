@@ -1,26 +1,45 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/driver_his.dart';
 import 'package:flutter_application_2/fine.dart';
 import 'package:flutter_application_2/history_page.dart';
 import 'package:flutter_application_2/login_screen.dart';
 import 'package:flutter_application_2/roadrules.dart';
 import 'package:flutter_application_2/utils/user_preferences.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+var fullName = '';
+var nic = '';
+var address = '';
+var phoneNumber = '';
+var dateofbirth = '';
+var issuedDate = '';
+var dateofexpiry = '';
+var bloodGroup = '';
+var vehicleType = '';
 
 class Profilepage extends StatefulWidget {
   const Profilepage({Key? key}) : super(key: key);
 
-  @override
+  /*@override
   State<StatefulWidget> createState() {
     return _ProfilepageState();
   }
+}*/
+  @override
+  _ProfilepageState createState() => _ProfilepageState();
 }
 
 class _ProfilepageState extends State<Profilepage> {
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
   //late User user;
 
   /*void initState() {
@@ -39,25 +58,49 @@ class _ProfilepageState extends State<Profilepage> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            fullName,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildNIC() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          ' National Identity Card number',
+          style: TextStyle(
+              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            nic,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -73,59 +116,107 @@ class _ProfilepageState extends State<Profilepage> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            address,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
 
-  Widget buildbod() {
+  Widget buildBirthdate() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         const Text(
-          'Date of birth',
+          'Date of Birth',
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            dateofbirth,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildIssuedDate() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          'Date of Issued',
+          style: TextStyle(
+              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            issuedDate,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildExpiryDate() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          'Date of Expiry',
+          style: TextStyle(
+              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            dateofexpiry,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -141,25 +232,20 @@ class _ProfilepageState extends State<Profilepage> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            bloodGroup,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -175,25 +261,20 @@ class _ProfilepageState extends State<Profilepage> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            vehicleType,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
         ElevatedButton(
             onPressed: () => {
                   //sign out
@@ -203,6 +284,36 @@ class _ProfilepageState extends State<Profilepage> {
       ],
     );
   }
+
+  /* @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text(
+            'Welcome ' + fullName,
+            style: TextStyle(fontSize: 20),
+          ),
+          Text('(cellnumber: ' +
+              (_auth.currentUser!.phoneNumber ?? '') +
+              ' uid:' +
+              (_auth.currentUser!.uid != null ? _auth.currentUser!.uid : '') +
+              ')'),
+          ElevatedButton(
+              onPressed: () => {
+                    //sign out
+                    signOut()
+                  },
+              child: Text('Sign out'))
+        ],
+      ),
+    ));
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -280,8 +391,11 @@ class _ProfilepageState extends State<Profilepage> {
                       size: 80, color: const Color.fromARGB(255, 18, 17, 17)),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'ID :XXXXXXXXXXX',
+                Text(
+                  'ID :' +
+                      (_auth.currentUser!.uid != null
+                          ? _auth.currentUser!.uid
+                          : ''),
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -310,7 +424,7 @@ class _ProfilepageState extends State<Profilepage> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const history()));
+                                  builder: (context) => const Driverhis()));
                         },
                       ),
                     ],
@@ -319,9 +433,15 @@ class _ProfilepageState extends State<Profilepage> {
                 const SizedBox(height: 30),
                 buildFullname(),
                 const SizedBox(height: 20),
+                buildNIC(),
+                const SizedBox(height: 20),
                 buildAddress(),
                 const SizedBox(height: 20),
-                buildbod(),
+                buildBirthdate(),
+                const SizedBox(height: 20),
+                buildIssuedDate(),
+                const SizedBox(height: 20),
+                buildExpiryDate(),
                 const SizedBox(height: 20),
                 buildbloodtype(),
                 const SizedBox(height: 20),
@@ -335,25 +455,77 @@ class _ProfilepageState extends State<Profilepage> {
     );
   }
 
+  Future getUser() async {
+    if (_auth.currentUser != null) {
+      var phoneNumber = _auth.currentUser!.phoneNumber;
+      phoneNumber =
+          _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
+      debugPrint(phoneNumber);
+
+      if (_auth.currentUser != null) {
+        await _firestore
+            .collection('Driver')
+            .doc('Nativity')
+            .collection('Local')
+            .where('Phone Number', isEqualTo: phoneNumber)
+            .get()
+            .then((result) {
+          //print("docs length: " + result.docs.length.toString());
+          //print(result.docs.length);
+          if (mounted) {
+            if (result.docs.length > 0) {
+              setState(() {
+                var data = result.docs[0].data();
+                if (data.containsKey('FullName')) {
+                  fullName = data['FullName'];
+                }
+                if (data.containsKey('NIC')) {
+                  nic = data['NIC'];
+                }
+                if (data.containsKey('Address')) {
+                  address = data['Address'];
+                }
+                if (data.containsKey('DateOfBirth')) {
+                  dateofbirth = data['DateOfBirth'];
+                }
+                if (data.containsKey('IssuedDate')) {
+                  issuedDate = data['IssuedDate'];
+                }
+                if (data.containsKey('DateofExpiry')) {
+                  dateofexpiry = data['DateofExpiry'];
+                }
+                if (data.containsKey('BloodGroup')) {
+                  bloodGroup = data['BloodGroup'];
+                }
+                if (data.containsKey('VehicleType')) {
+                  vehicleType = data['VehicleType'];
+                }
+              });
+            }
+          }
+        });
+      }
+    }
+  }
+
   signOut() {
     //redirect
     _auth.signOut().then((value) => Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (BuildContext context) => LoginScreen())));
   }
-}
 
-//
-/* void initState() {
+  /*void initState() {
     super.initState();
     user = UserPreferences.getUser();
   }*/
-HeaderWidget(int i, bool bool, IconData house_rounded) {}
+  HeaderWidget(int i, bool bool, IconData house_rounded) {}
 
-void SelectedItem(BuildContext context, item) {
-  switch (item) {
-    case 0:
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const Roadrules()));
-      break;
+  void SelectedItem(BuildContext context, item) {
+    switch (item) {
+      case 0:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const Roadrules()));
+        break;
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_2/foreign_profile.dart';
 import 'package:flutter_application_2/login_Screen.dart';
 import 'package:flutter_application_2/profile_page.dart';
 import 'package:flutter_application_2/nativity.dart';
@@ -753,7 +754,7 @@ class _foreignState extends State<foreign> {
                                                     MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
-                                                          Profilepage(),
+                                                          Foreignprofile(),
                                                     ),
                                                     (route) => false,
                                                   )
@@ -891,7 +892,7 @@ class _foreignState extends State<foreign> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        Profilepage(),
+                                        Foreignprofile(),
                                   ),
                                   (route) => false,
                                 );

@@ -2,6 +2,18 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "accordion",
+      "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/accordion-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "anim_search_bar",
+      "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/anim_search_bar-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2",
       "packageUri": "lib/",
@@ -212,6 +224,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "get",
+      "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/get-4.6.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "google_maps_flutter",
       "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-2.2.2",
       "packageUri": "lib/",
@@ -324,6 +342,12 @@
       "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "scroll_to_index",
+      "rootUri": "file:///E:/Flutter2105/flutter/.pub-cache/hosted/pub.dartlang.org/scroll_to_index-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "scrollable_positioned_list",
@@ -464,7 +488,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2023-01-12T11:21:38.421370Z",
+  "generated": "2023-01-16T12:51:38.991143Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }

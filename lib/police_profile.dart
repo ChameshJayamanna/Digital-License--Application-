@@ -5,11 +5,18 @@ import 'package:flutter_application_2/profile_page.dart';
 import 'QR.dart';
 
 import 'driver_search.dart';
+import 'history_page.dart';
 import 'login_Screen.dart';
 import 'map.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+var fullName = '';
+var nic = '';
+var rank = '';
+var offaddress = '';
+var homaddress = '';
+var pnumber = '';
 
 //import 'package:flutter/services.dart';
 
@@ -23,6 +30,12 @@ class Policeprofile extends StatefulWidget {
 }
 
 class _PoliceprofileState extends State<Policeprofile> {
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
+
   Widget buildFullname() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,25 +47,20 @@ class _PoliceprofileState extends State<Policeprofile> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            fullName,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -68,25 +76,20 @@ class _PoliceprofileState extends State<Policeprofile> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            offaddress,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -102,25 +105,20 @@ class _PoliceprofileState extends State<Policeprofile> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            rank,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -136,25 +134,20 @@ class _PoliceprofileState extends State<Policeprofile> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            homaddress,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -170,25 +163,20 @@ class _PoliceprofileState extends State<Policeprofile> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            pnumber,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
         ElevatedButton(
             onPressed: () => {
                   //sign out
@@ -210,25 +198,20 @@ class _PoliceprofileState extends State<Policeprofile> {
         ),
         const SizedBox(height: 10),
         Container(
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(6, 6))
-                ]),
-            height: 60,
-            child: const TextField(
-              keyboardType: TextInputType.text,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-              ),
-            )),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(6, 6))
+              ]),
+          height: 60,
+          child: Text(
+            nic,
+            style: TextStyle(color: Colors.black87),
+          ),
+        ),
       ],
     );
   }
@@ -271,14 +254,14 @@ class _PoliceprofileState extends State<Policeprofile> {
               PopupMenuItem<int>(
                 value: 1,
                 child: Text(
-                  "Generate QR code",
+                  "Map",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuItem<int>(
                 value: 2,
                 child: Text(
-                  "Map",
+                  "Add history",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -324,7 +307,10 @@ class _PoliceprofileState extends State<Policeprofile> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'ID :XXXXXXXXXXX',
+                  'ID :' +
+                      (_auth.currentUser!.uid != null
+                          ? _auth.currentUser!.uid
+                          : ''),
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -355,22 +341,88 @@ class _PoliceprofileState extends State<Policeprofile> {
     _auth.signOut().then((value) => Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (BuildContext context) => LoginScreen())));
   }
-}
 
-HeaderWidget(int i, bool bool, IconData house_rounded) {}
+  Future getUser() async {
+    if (_auth.currentUser != null) {
+      var phoneNumber = _auth.currentUser!.phoneNumber;
+      phoneNumber =
+          _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
+      debugPrint(phoneNumber);
 
-SelectedItem(BuildContext context, Object? item) {
-  switch (item) {
-    case 0:
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Driversearch()));
-      break;
-    case 1:
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Qr()));
-      break;
-    case 2:
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Map()));
-      break;
+      if (_auth.currentUser != null) {
+        List<String> collectionNames = [
+          "AS",
+          "ChiefInspector",
+          "DIG",
+          "IG",
+          "Inspector",
+          "PSClass1",
+          "PSClass2",
+          "PSClass3",
+          "PSClass4",
+          "SDIG",
+          "SI",
+          "SS",
+          "SergeantMajor",
+          "SuperIntendent"
+        ];
+        for (String collectionName in collectionNames) {
+          await _firestore
+              .collection('Police')
+              .doc('Rank')
+              .collection(collectionName)
+              .where('PhoneNumber', isEqualTo: phoneNumber)
+              .get()
+              .then((result) {
+            //print("docs length: " + result.docs.length.toString());
+            //print(result.docs.length);
+            if (mounted) {
+              if (result.docs.length > 0) {
+                setState(() {
+                  var data = result.docs[0].data();
+                  if (data.containsKey('FullName')) {
+                    fullName = data['FullName'];
+                  }
+                  if (data.containsKey('NIC')) {
+                    nic = data['NIC'];
+                  }
+                  if (data.containsKey('Rank')) {
+                    rank = data['Rank'];
+                  }
+                  if (data.containsKey('OfficialAddress')) {
+                    offaddress = data['OfficialAddress'];
+                  }
+                  if (data.containsKey('Address')) {
+                    homaddress = data['Address'];
+                  }
+                  if (data.containsKey('PhoneNumber')) {
+                    pnumber = data['PhoneNumber'];
+                  }
+                });
+              }
+            }
+          });
+        }
+      }
+    }
+  }
+
+  HeaderWidget(int i, bool bool, IconData house_rounded) {}
+
+  SelectedItem(BuildContext context, Object? item) {
+    switch (item) {
+      case 0:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Driversearch()));
+        break;
+      case 1:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Map()));
+        break;
+      case 2:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => history()));
+        break;
+    }
   }
 }

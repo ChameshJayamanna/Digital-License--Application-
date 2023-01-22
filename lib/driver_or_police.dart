@@ -1,13 +1,9 @@
 import 'dart:math';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_2/fine.dart';
-import 'package:flutter_application_2/history_page.dart';
 import 'package:flutter_application_2/login_screen.dart';
 import 'package:flutter_application_2/nativity.dart';
 import 'package:flutter_application_2/police_signup.dart';
-import 'package:flutter_application_2/sign_up.dart';
 
 //import 'package:flutter/services.dart';
 
@@ -25,7 +21,7 @@ class _DriverpoliceState extends State<Driverpolice> {
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
         width: 150,
-        height: 80,
+        height: 90,
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(context,
@@ -33,11 +29,15 @@ class _DriverpoliceState extends State<Driverpolice> {
           },
           // padding:const EdgeInsets.all(15),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.blue.shade400),
           ),
           child: const Text(
             'Driver ',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
           ),
         ));
   }
@@ -46,7 +46,7 @@ class _DriverpoliceState extends State<Driverpolice> {
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
         width: 150,
-        height: 80,
+        height: 90,
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(context,
@@ -54,11 +54,15 @@ class _DriverpoliceState extends State<Driverpolice> {
           },
           // padding:const EdgeInsets.all(15),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.blue.shade400),
           ),
           child: const Text(
             'Police',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
           ),
         ));
   }
@@ -80,7 +84,7 @@ class _DriverpoliceState extends State<Driverpolice> {
         ),
         title: Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
         titleTextStyle: const TextStyle(
-            color: Colors.white, fontSize: 12.5, fontWeight: FontWeight.bold),
+            color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
         elevation: 0.5,
         iconTheme: IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
         flexibleSpace: Container(
@@ -90,6 +94,7 @@ class _DriverpoliceState extends State<Driverpolice> {
                   end: Alignment.bottomRight,
                   colors: <Color>[Theme.of(context).primaryColor])),
         ),
+        //  backgroundColor: Color.fromARGB(206, 93, 209, 255),
       ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -98,7 +103,7 @@ class _DriverpoliceState extends State<Driverpolice> {
             Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                /*decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -107,11 +112,19 @@ class _DriverpoliceState extends State<Driverpolice> {
                       Color.fromARGB(153, 73, 123, 231),
                       Color.fromARGB(204, 37, 89, 201),
                       Color.fromARGB(255, 10, 43, 112),
-                    ])),
+                    ])),*/
+                decoration: BoxDecoration(
+                    gradient:
+                        LinearGradient(begin: Alignment.topCenter, colors: [
+                  Color.fromARGB(255, 73, 161, 205),
+                  Color.fromARGB(255, 102, 183, 215),
+                  Color.fromARGB(255, 72, 205, 192),
+                ])),
+                // color:const Color.fromRGBO(174, 198, 207,20),
                 child: SingleChildScrollView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 120),
+                        horizontal: 25, vertical: 150),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

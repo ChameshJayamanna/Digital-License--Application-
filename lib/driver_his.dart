@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
@@ -23,6 +21,7 @@ class Driverhis extends StatefulWidget {
 }
 
 class _DriverhisState extends State<Driverhis> {
+  List<Map<String, String>> _records = [];
   @override
   void initState() {
     getUser();
@@ -32,7 +31,7 @@ class _DriverhisState extends State<Driverhis> {
   Future getUser() async {
     if (_auth.currentUser != null) {
       var phoneNumber = _auth.currentUser!.phoneNumber;
-      phoneNumber =
+      phoneNumber = '0' +
           _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
       debugPrint(phoneNumber);
 
@@ -42,32 +41,18 @@ class _DriverhisState extends State<Driverhis> {
             .where('Phone Number', isEqualTo: phoneNumber)
             .get()
             .then((result) {
-          //print("docs length: " + result.docs.length.toString());
-          print(result.docs.length);
+          for (var i = 0; i < result.docs.length; i++) {
+            var data = result.docs[i].data();
+            _records.add({
+              'DriverNIC': data['DriverNIC'],
+              'PoliceNIC': data['PoliceNIC'],
+              'Phone Number': data['Phone Number'],
+              'Severity': data['Severity'],
+              'Description': data['Description'],
+            });
+          }
           if (mounted) {
-            if (result.docs.length > 0) {
-              setState(() {
-                var data = result.docs[0].data();
-                if (data.containsKey('DriverNIC')) {
-                  driverNIC = data['DriverNIC'];
-                }
-                if (data.containsKey('PoliceNIC')) {
-                  policeNIC = data['PoliceNIC'];
-                }
-                if (data.containsKey('Phone Number')) {
-                  description = data['Phone Number'];
-                }
-                if (data.containsKey('Severity')) {
-                  severity = data['Severity'];
-                }
-                if (data.containsKey('Description')) {
-                  description = data['Description'];
-                }
-                if (data.containsKey('Phone Number')) {
-                  phonumber = data['Phone Number'];
-                }
-              });
-            }
+            setState(() {});
           }
         });
       }
@@ -82,6 +67,63 @@ class _DriverhisState extends State<Driverhis> {
       color: Color(0xff999999), fontSize: 14, fontWeight: FontWeight.normal);
   @override
   Widget build(BuildContext context) {
+    int recordCount = 1;
+    List<AccordionSection> accordionSections = [];
+    for (var record in _records) {
+      accordionSections.add(
+        AccordionSection(
+          isOpen: false,
+          leftIcon: const Icon(Icons.food_bank, color: Colors.white),
+          header: Text('Record $recordCount', style: _headerStyle),
+          content: DataTable(
+            sortAscending: true,
+            sortColumnIndex: 1,
+            dataRowHeight: 40,
+            showBottomBorder: false,
+            columns: [
+              DataColumn(
+                  label: Text('Driver NIC',
+                      style: _contentStyleHeader, textAlign: TextAlign.left),
+                  numeric: true),
+              DataColumn(
+                  label: Text(record['DriverNIC']!,
+                      style: _contentStyle, textAlign: TextAlign.right)),
+            ],
+            rows: [
+              DataRow(
+                cells: [
+                  DataCell(Text('Police NIC',
+                      style: _contentStyleHeader, textAlign: TextAlign.left)),
+                  DataCell(Text(record['PoliceNIC']!, style: _contentStyle)),
+                ],
+              ),
+              DataRow(cells: [
+                DataCell(Text('Phone Number',
+                    style: _contentStyleHeader, textAlign: TextAlign.left)),
+                DataCell(
+                  Text(record['Phone Number']!, style: _contentStyle),
+                ),
+              ]),
+              DataRow(
+                cells: [
+                  DataCell(Text('Severity',
+                      style: _contentStyleHeader, textAlign: TextAlign.left)),
+                  DataCell(Text(record['Severity']!, style: _contentStyle)),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(Text('Description',
+                      style: _contentStyleHeader, textAlign: TextAlign.left)),
+                  DataCell(Text(record['Description']!, style: _contentStyle)),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+      recordCount++;
+    }
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -116,63 +158,11 @@ class _DriverhisState extends State<Driverhis> {
       body: Accordion(
         maxOpenSections: 5,
         headerBackgroundColorOpened: Colors.black54,
-        //scaleWhenAnimating: true,
         openAndCloseAnimation: true,
         headerPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
-        children: [
-          AccordionSection(
-            isOpen: false,
-            leftIcon: const Icon(Icons.food_bank, color: Colors.white),
-            header: Text('Record 01', style: _headerStyle),
-            content: DataTable(
-              sortAscending: true,
-              sortColumnIndex: 1,
-              dataRowHeight: 40,
-              showBottomBorder: false,
-              columns: [
-                DataColumn(
-                    label: Text('Driver NIC',
-                        style: _contentStyleHeader, textAlign: TextAlign.left),
-                    numeric: true),
-                DataColumn(
-                    label: Text(driverNIC,
-                        style: _contentStyle, textAlign: TextAlign.right)),
-              ],
-              rows: [
-                DataRow(
-                  cells: [
-                    DataCell(Text('Police NIC',
-                        style: _contentStyleHeader, textAlign: TextAlign.left)),
-                    DataCell(Text(policeNIC, style: _contentStyle)),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text('Phone Number',
-                        style: _contentStyleHeader, textAlign: TextAlign.left)),
-                    DataCell(Text(phonumber, style: _contentStyle)),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text('Severity',
-                        style: _contentStyleHeader, textAlign: TextAlign.left)),
-                    DataCell(Text(severity, style: _contentStyle)),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text('Description',
-                        style: _contentStyleHeader, textAlign: TextAlign.left)),
-                    DataCell(Text(description, style: _contentStyle)),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+        children: accordionSections,
       ),
     );
   }

@@ -1,11 +1,8 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/driver_or_police.dart';
-import 'package:flutter_application_2/login_Screen.dart';
 import 'package:flutter_application_2/police_profile.dart';
-import 'package:flutter_application_2/profile_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -169,12 +166,15 @@ class _policesignupState extends State<policesignup> {
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
-        color: Color.fromARGB(255, 34, 196, 255),
+        color: Color.fromRGBO(177, 212, 224, 20),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
           child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+            ),
             margin: const EdgeInsets.symmetric(horizontal: 5),
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -194,7 +194,7 @@ class _policesignupState extends State<policesignup> {
                         height: 10,
                       ),
                       Text(
-                        "Create an Account,Its free",
+                        "Create an Account, Its free",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.grey[700],

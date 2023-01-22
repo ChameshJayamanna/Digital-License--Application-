@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/dangerw.dart';
+import 'package:flutter_application_2/highway.dart';
+import 'package:flutter_application_2/mandatory.dart';
+import 'package:flutter_application_2/priority.dart';
 import 'package:flutter_application_2/profile_page.dart';
 import 'package:flutter_application_2/basicrules.dart';
+import 'package:flutter_application_2/prohibi.dart';
 
 class Roadrules extends StatefulWidget {
   const Roadrules({Key? key}) : super(key: key);
@@ -9,8 +14,8 @@ class Roadrules extends StatefulWidget {
   State<Roadrules> createState() => _RoadrulesState();
 }
 
-const Color backgroundColor = Colors.white10;
-const Color buttonColor = Color.fromARGB(255, 30, 160, 241);
+const Color backgroundColor = Color.fromARGB(224, 18, 18, 18);
+const Color buttonColor = Color.fromARGB(223, 223, 169, 228);
 
 class _RoadrulesState extends State<Roadrules> {
   int _selectedIndex = 0;
@@ -23,7 +28,7 @@ class _RoadrulesState extends State<Roadrules> {
         child: Column(
           children: <Widget>[
             const SizedBox(
-              height: 50,
+              height: 75,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +83,12 @@ class _RoadrulesState extends State<Roadrules> {
                         Text('Rules'),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Highwayrules()));
+                    },
                   ),
                 ),
               ],
@@ -107,7 +117,12 @@ class _RoadrulesState extends State<Roadrules> {
                         Text('Signs'),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Prohibi()));
+                    },
                   ),
                 ),
                 Padding(
@@ -131,7 +146,12 @@ class _RoadrulesState extends State<Roadrules> {
                         Text('Signs'),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Mandatory()));
+                    },
                   ),
                 ),
               ],
@@ -160,7 +180,12 @@ class _RoadrulesState extends State<Roadrules> {
                         Text('Signs'),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Priority()));
+                    },
                   ),
                 ),
                 Padding(
@@ -185,7 +210,12 @@ class _RoadrulesState extends State<Roadrules> {
                         Text('Signs'),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Dangerw()));
+                    },
                   ),
                 ),
               ],

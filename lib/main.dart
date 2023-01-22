@@ -1,14 +1,6 @@
-import 'dart:math';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_application_2/login_screen.dart';
-import 'package:flutter_application_2/profile_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_2/splash_screen.dart';
-import 'package:flutter_application_2/utils/firebase_user_preferences.dart';
-import 'package:flutter_application_2/utils/user_preferences.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,17 +1,10 @@
-import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/foreign_profile.dart';
-import 'package:flutter_application_2/login_Screen.dart';
-import 'package:flutter_application_2/profile_page.dart';
 import 'package:flutter_application_2/nativity.dart';
-import 'package:flutter/src/painting/gradient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-
-import 'authentication.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -208,13 +201,16 @@ class _foreignState extends State<foreign> {
         ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 34, 196, 255),
+        color: Color.fromRGBO(177, 212, 224, 20),
         alignment: Alignment.center,
         child: Center(
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
               margin: const EdgeInsets.symmetric(horizontal: 5),
               child: Padding(
                 padding: const EdgeInsets.all(20),
@@ -234,7 +230,7 @@ class _foreignState extends State<foreign> {
                           height: 10,
                         ),
                         Text(
-                          "Create an Account,Its free",
+                          "Create an Account, Its free",
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey[700],

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
@@ -36,8 +35,9 @@ class InitState extends State<SplashScreen> {
         decoration: BoxDecoration(
             color: Color.fromARGB(204, 37, 89, 201),
             gradient: LinearGradient(colors: [
-              (Color.fromARGB(204, 37, 89, 201)),
-              (Color.fromARGB(204, 16, 16, 17))
+              Color.fromARGB(255, 13, 148, 215),
+              Color.fromARGB(255, 100, 190, 246),
+              // Colors.blue.shade100,
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
       ),
       Center(
@@ -45,8 +45,19 @@ class InitState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
             Container(
-              child: Image.asset("lib/assets/logo4.jpg"),
+              child: Image.asset(
+                "lib/assets/logo1new2.png",
+                height: 180,
+                width: 180,
+                fit: BoxFit.fitWidth,
+              ),
             ),
+            Container(
+                child: Text("More than just a DIGITAL",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500))),
             Padding(padding: EdgeInsets.only(top: 20)),
             CircularProgressIndicator(
               backgroundColor: Colors.white,

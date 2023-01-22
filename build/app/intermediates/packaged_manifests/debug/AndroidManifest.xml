@@ -68,7 +68,7 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC3W_EqVw5hxl9WW3N49kM9MVST0Q6x5OA" />
+            android:value="AIzaSyDrUFw9y8L_d4tPjD7W32ZPrdQM99L2gEw" />
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
@@ -105,6 +105,11 @@
                 android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
+
+        <activity
+            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <uses-library
             android:name="androidx.window.extensions"

@@ -2,13 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/driver_his.dart';
-import 'package:flutter_application_2/fine.dart';
-import 'package:flutter_application_2/history_page.dart';
 import 'package:flutter_application_2/login_screen.dart';
+import 'package:flutter_application_2/map.dart';
 import 'package:flutter_application_2/roadrules.dart';
-import 'package:flutter_application_2/utils/user_preferences.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -81,7 +77,7 @@ class _ForeignprofileState extends State<Foreignprofile> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         const Text(
-          ' National Identity Card number',
+          'National Identity Card number',
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -275,6 +271,7 @@ class _ForeignprofileState extends State<Foreignprofile> {
             style: TextStyle(color: Colors.black87),
           ),
         ),
+        const SizedBox(height: 15),
         ElevatedButton(
             onPressed: () => {
                   //sign out
@@ -319,17 +316,6 @@ class _ForeignprofileState extends State<Foreignprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.arrow_left_sharp),
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
-            );
-          },
-        ),
         title: const Text('Driver Profile Page'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
@@ -344,6 +330,13 @@ class _ForeignprofileState extends State<Foreignprofile> {
                 value: 0,
                 child: const Text(
                   "Road rules",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              PopupMenuItem<int>(
+                value: 1,
+                child: Text(
+                  "View map",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -458,7 +451,7 @@ class _ForeignprofileState extends State<Foreignprofile> {
   Future getUser() async {
     if (_auth.currentUser != null) {
       var phoneNumber = _auth.currentUser!.phoneNumber;
-      phoneNumber =
+      phoneNumber = '0' +
           _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
       debugPrint(phoneNumber);
 
@@ -525,6 +518,10 @@ class _ForeignprofileState extends State<Foreignprofile> {
       case 0:
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => const Roadrules()));
+        break;
+      case 1:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => MapScreen()));
         break;
     }
   }

@@ -1,10 +1,5 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_application_2/police_profile.dart';
-import 'package:flutter_application_2/profile_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -18,6 +13,7 @@ class history extends StatefulWidget {
   }
 }
 
+TextEditingController _controller = new TextEditingController();
 Widget buildgetExpenses() {
   return ListView.builder(
     itemBuilder: (context, index) {
@@ -42,11 +38,21 @@ Widget buildgetExpenses() {
 
 class _historyState extends State<history> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> items = [
+
+  List<DropdownMenuItem<String>> get dropdownItems {
+    List<DropdownMenuItem<String>> menuItems = [
+      DropdownMenuItem(child: Text("LOW"), value: "LOW"),
+      DropdownMenuItem(child: Text("MEDIUM"), value: "MEDIUM"),
+      DropdownMenuItem(child: Text("HIGH"), value: "HIGH"),
+    ];
+    return menuItems;
+  }
+
+  /*final List<String> items = [
     'LOW',
     'MEDIUM',
     'HIGH',
-  ];
+  ];*/
   String? selectedValue;
 
   late String driverNIC, policeNIC, severity, description, mobile;
@@ -128,25 +134,6 @@ class _historyState extends State<history> {
                   colors: <Color>[Theme.of(context).primaryColor])),
         ),
       ),
-
-      /*  child: ListView.separated(
-         padding: const EdgeInsets.all(10),
-              itemCount: entries.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 25,
-                  color: Colors.blue,
-                  child: 
-                  Text(
-                    'Entry ${entries[index]}',
-                     textAlign: TextAlign.left,  
-                    ),
-                );
-              },
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
-         )
-            */
-
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             showDialog(
@@ -175,125 +162,107 @@ class _historyState extends State<history> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextField(
+                                padding: EdgeInsets.all(6.0),
+                                child: TextFormField(
                                     decoration: InputDecoration(
                                       hintText: 'Driver NIC',
                                       labelText: 'Driver NIC',
                                     ),
+                                    validator: (value) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      return null;
+                                    },
                                     onChanged: (String driverNIC) {
                                       getDriverNIC(driverNIC);
                                     }),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextField(
+                                padding: EdgeInsets.all(6.0),
+                                child: TextFormField(
                                     decoration: InputDecoration(
                                       hintText: 'Police NIC',
                                       labelText: 'Police NIC',
                                     ),
+                                    validator: (value) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      return null;
+                                    },
                                     onChanged: (String policeNIC) {
                                       getPoliceNIC(policeNIC);
                                     }),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextField(
+                                padding: EdgeInsets.all(6.0),
+                                child: TextFormField(
                                     decoration: InputDecoration(
                                       hintText: 'Phone Number',
                                       labelText: 'Phone Number',
                                     ),
+                                    validator: (value) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      return null;
+                                    },
                                     onChanged: (String phnumber) {
                                       getmobile(phnumber);
                                     }),
                               ),
-                              Container(
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton2(
-                                    isExpanded: true,
-                                    hint: Row(
-                                      children: const [
-                                        Icon(
-                                          Icons.article_outlined,
-                                          size: 16,
-                                          color: Colors.black38,
-                                        ),
-                                        SizedBox(
-                                          width: 4,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'SEVERITY',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black38,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                      ],
+                              DropdownButtonFormField(
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black38, width: 1),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                    items: items
-                                        .map((item) => DropdownMenuItem<String>(
-                                              value: item,
-                                              child: Text(
-                                                item,
-                                                style: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black38,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ))
-                                        .toList(),
-                                    value: selectedValue,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        selectedValue = value as String;
-                                      });
-                                    },
-                                    icon: const Icon(
-                                      Icons.arrow_forward_ios_outlined,
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black38, width: 1),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                    iconSize: 15,
-                                    iconEnabledColor: Colors.black38,
-                                    iconDisabledColor: Colors.grey,
-                                    buttonHeight: 50,
-                                    buttonWidth: 200,
-                                    buttonPadding: const EdgeInsets.only(
-                                        left: 14, right: 14),
-                                    buttonDecoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(14),
-                                      color: Color.fromARGB(255, 255, 255, 255),
+                                    prefixIcon: Icon(Icons.article_outlined),
+                                    hintText: 'SEVERITY',
+                                    hintStyle: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black38,
                                     ),
-                                    buttonElevation: 2,
-                                    itemHeight: 40,
-                                    itemPadding: const EdgeInsets.only(
-                                        left: 14, right: 14),
-                                    dropdownMaxHeight: 200,
-                                    dropdownWidth: 200,
-                                    dropdownPadding: null,
-                                    dropdownDecoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(9),
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                    ),
-                                    dropdownElevation: 8,
-                                    scrollbarRadius: const Radius.circular(40),
-                                    scrollbarThickness: 6,
-                                    scrollbarAlwaysShow: true,
-                                    offset: const Offset(0, 2),
                                   ),
-                                ),
-                              ),
+                                  dropdownColor:
+                                      Color.fromARGB(255, 251, 252, 253),
+                                  value: selectedValue,
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return 'This field is required';
+                                    }
+                                    return null;
+                                  },
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      selectedValue = value!;
+                                    });
+                                  },
+                                  items: dropdownItems),
                               Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextField(
+                                padding: EdgeInsets.all(6.0),
+                                child: TextFormField(
                                     decoration: InputDecoration(
                                       hintText: 'Description',
                                       labelText: 'Description',
                                     ),
+                                    validator: (value) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      return null;
+                                    },
                                     onChanged: (String description) {
                                       getDescription(description);
                                     }),
@@ -303,9 +272,13 @@ class _historyState extends State<history> {
                                 child: FloatingActionButton(
                                   child: Text("Submit"),
                                   onPressed: () {
+                                    setState(() {
+                                      _controller.clear();
+                                    });
                                     if (_formKey.currentState!.validate()) {
                                       _formKey.currentState!.save();
                                       createData();
+                                      Navigator.of(context).pop();
                                     }
                                     ;
                                   },

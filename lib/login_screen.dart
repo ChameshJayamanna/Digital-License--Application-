@@ -1,5 +1,5 @@
 // ignore_for_file: file_names
-
+import 'dart:math' as math;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,12 +61,7 @@ import 'package:flutter_application_2/driver_or_police.dart';
 import 'package:flutter_application_2/foreign_profile.dart';
 import 'package:flutter_application_2/police_profile.dart';
 import 'package:flutter_application_2/profile_page.dart';
-import 'package:flutter_application_2/sign_up.dart';
-import 'package:flutter_application_2/main.dart';
-import 'package:flutter_application_2/utils/firebase_user_preferences.dart';
-import 'package:flutter_application_2/utils/user_preferences.dart';
-
-import 'authentication.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -190,169 +185,232 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget returnLoginScreen() {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: new AppBar(
-          title: const Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
-          titleTextStyle: const TextStyle(
-              color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
-          centerTitle: true,
-        ),
-        body: ListView(children: [
-          const SizedBox(height: 200),
-          new Column(
-            children: [
-              Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      Container(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
-                        child: TextFormField(
-                          enabled: !isLoading,
-                          controller: phoneController,
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            fillColor: Colors.black,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            hintText: 'Enter your Phone number',
-                            labelText: 'Phone Number',
-                            prefixIcon: Icon(
-                              Icons.account_circle,
+      key: _scaffoldKey,
+      appBar: new AppBar(
+        title: const Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
+        titleTextStyle: const TextStyle(
+            color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+        centerTitle: true,
+      ),
+      body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+            Colors.blue.shade400,
+            Colors.blue.shade200,
+            Colors.blue.shade100,
+          ])),
+          child: ListView(children: [
+            const SizedBox(
+              height: 100,
+            ),
+            const Text(
+              'Digital',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                  fontSize: 42,
+                  fontWeight: FontWeight.bold),
+            ),
+            const Text(
+              'License',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                  fontSize: 42,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 80),
+            new Column(
+              children: [
+                Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        Container(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 10.0),
+                          child: TextFormField(
+                            enabled: !isLoading,
+                            controller: phoneController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              fillColor: Colors.black,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              contentPadding: EdgeInsets.only(top: 14),
+                              hintText: 'Enter your Phone number',
+                              labelText: 'Phone Number',
+                              prefixIcon: Icon(
+                                Icons.phone,
+                              ),
                             ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter phone number';
+                              }
+                            },
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter phone number';
-                            }
-                          },
-                        ),
-                      )),
-                      Container(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
-                        child: TextFormField(
-                          enabled: !isLoading,
-                          controller: passwordController,
-                          keyboardType: TextInputType.visiblePassword,
-                          decoration: InputDecoration(
-                            fillColor: Color.fromARGB(255, 18, 17, 17),
-                            focusColor: Colors.black,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 10, 10, 10))),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            hintText: 'Enter your password',
-                            labelText: 'Password',
-
-                            // errorText: 'Password wrong',
-                            prefixIcon: Icon(
-                              Icons.lock,
-                            ),
-                            suffixIcon: passwordController.text.isEmpty
-                                ? Container(width: 0)
-                                : IconButton(
-                                    icon: isPasswordVisble
-                                        ? Icon(
-                                            Icons.visibility_off_rounded,
-                                            color: Color.fromARGB(
-                                                255, 124, 124, 124),
-                                          )
-                                        : Icon(
-                                            Icons.visibility,
-                                            color: Color.fromARGB(
-                                                255, 124, 124, 124),
-                                          ),
-                                    onPressed: () => setState(() =>
-                                        isPasswordVisble = !isPasswordVisble),
-                                  ),
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter your password';
-                            }
-                          },
-                          textInputAction: TextInputAction.done,
-                          obscureText: isPasswordVisble,
-                        ),
-                      )),
-                      Container(
-                          margin: EdgeInsets.only(top: 40, bottom: 5),
-                          child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
-                              child: !isLoading
-                                  ? new ElevatedButton(
-                                      onPressed: () async {
-                                        if (!isLoading) {
-                                          if (_formKey.currentState!
-                                              .validate()) {
-                                            displaySnackBar('Please wait...');
-                                            await login();
-                                          }
-                                        }
-                                      },
-                                      child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 15.0,
-                                            horizontal: 15.0,
-                                          ),
-                                          child: new Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Expanded(
-                                                  child: Text(
-                                                "Log In",
-                                                textAlign: TextAlign.center,
-                                              )),
-                                            ],
-                                          )),
-                                    )
-                                  : CircularProgressIndicator(
-                                      backgroundColor:
-                                          Theme.of(context).primaryColor,
-                                    ))),
-                      Container(
-                          margin: EdgeInsets.only(top: 15, bottom: 5),
-                          alignment: AlignmentDirectional.center,
-                          child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10.0),
-                                      child: Text(
-                                        "No Account ?",
-                                      )),
-                                  InkWell(
-                                    child: Text(
-                                      'Sign up',
+                        )),
+                        Container(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          child: TextFormField(
+                            enabled: !isLoading,
+                            controller: passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                              fillColor: const Color.fromARGB(255, 18, 17, 17),
+                              focusColor: Colors.black,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                      color: Color.fromARGB(255, 10, 10, 10))),
+                              contentPadding: EdgeInsets.only(top: 14),
+                              hintText: 'Enter your password',
+                              labelText: 'Password',
+                              // errorText: 'Password wrong',
+                              prefixIcon: Icon(
+                                Icons.lock,
+                              ),
+                              suffixIcon: passwordController.text.isEmpty
+                                  ? Container(width: 0)
+                                  : IconButton(
+                                      icon: isPasswordVisble
+                                          ? Icon(
+                                              Icons.visibility_off_rounded,
+                                              color: Color.fromARGB(
+                                                  255, 24, 23, 23),
+                                            )
+                                          : Icon(
+                                              Icons.visibility,
+                                              color: Color.fromARGB(
+                                                  255, 33, 33, 33),
+                                            ),
+                                      onPressed: () => setState(() =>
+                                          isPasswordVisble = !isPasswordVisble),
                                     ),
-                                    onTap: () => {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Driverpolice()))
-                                    },
-                                  ),
-                                ],
-                              )))
-                    ],
-                  ))
-            ],
-          )
-        ]));
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your password';
+                              }
+                            },
+                            textInputAction: TextInputAction.done,
+                            obscureText: isPasswordVisble,
+                          ),
+                        )),
+                        Container(
+                            margin: const EdgeInsets.only(top: 20, bottom: 5),
+                            child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0),
+                                child: !isLoading
+                                    ? new ElevatedButton(
+                                        onPressed: () async {
+                                          if (!isLoading) {
+                                            if (_formKey.currentState!
+                                                .validate()) {
+                                              displaySnackBar('Please wait...');
+                                              await login();
+                                            }
+                                          }
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromARGB(
+                                                      235, 0, 123, 168)),
+                                        ),
+                                        child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 15.0,
+                                              horizontal: 15.0,
+                                            ),
+                                            width: 120,
+                                            height: 55,
+                                            child: new Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Expanded(
+                                                    child: Text(
+                                                  "Login",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 255, 250, 250),
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                )),
+                                              ],
+                                            )),
+                                      )
+                                    : const CircularProgressIndicator(
+                                        backgroundColor:
+                                            Color.fromARGB(26, 9, 13, 14),
+                                      ))),
+                        Container(
+                            margin: const EdgeInsets.only(top: 15, bottom: 5),
+                            alignment: AlignmentDirectional.center,
+                            child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0),
+                                child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10.0),
+                                          child: Text("No Account ?",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.black87,
+                                                  fontSize: 18,
+                                                  fontWeight:
+                                                      FontWeight.bold))),
+                                      InkWell(
+                                        child: Text('Sign up',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.black87,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold)),
+                                        onTap: () => {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Driverpolice()))
+                                        },
+                                      ),
+                                    ]))),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: new InkWell(
+                              child: new Text(
+                                'Click here for medical bookings.',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                              onTap: () => launch(
+                                  'https://echannelling.com/Echannelling/ntmi-channel')),
+                        )
+                      ],
+                    ))
+              ],
+            )
+          ])),
+    );
   }
 
   /*@override
@@ -433,6 +491,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 */
+
   Widget returnOTPScreen() {
     return Scaffold(
         key: _scaffoldKey,
@@ -641,7 +700,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   displaySnackBar(text) {
     final snackBar = SnackBar(content: Text(text));
-    _scaffoldKey.currentState!.showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   var isValidUser = false;
@@ -890,5 +949,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }*/
-  
-  

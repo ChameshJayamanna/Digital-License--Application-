@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:4:4-36:19
+INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:6:4-38:19
 MERGED from [:firebase_analytics] F:\flutter_test\flutter_application_2\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
 MERGED from [:firebase_analytics] F:\flutter_test\flutter_application_2\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
 MERGED from [:firebase_auth] F:\flutter_test\flutter_application_2\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
@@ -11,6 +11,8 @@ MERGED from [:cloud_firestore] F:\flutter_test\flutter_application_2\build\cloud
 MERGED from [:cloud_firestore] F:\flutter_test\flutter_application_2\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] F:\flutter_test\flutter_application_2\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] F:\flutter_test\flutter_application_2\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\5d93ab2f2812dcc02a149cabf48676c0\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\5d93ab2f2812dcc02a149cabf48676c0\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.firebase:firebase-auth:21.0.7] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\9b76a9b26f08797c4dc391f55eddd6fd\jetified-firebase-auth-21.0.7\AndroidManifest.xml:26:5-71:19
@@ -64,11 +66,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ch
 	android:name
 		INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
-INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
-INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
-INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
-MERGED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
+ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
 MERGED from [:shared_preferences_android] F:\flutter_test\flutter_application_2\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_analytics] F:\flutter_test\flutter_application_2\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:firebase_auth] F:\flutter_test\flutter_application_2\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
@@ -77,6 +79,7 @@ MERGED from [:cloud_firestore] F:\flutter_test\flutter_application_2\build\cloud
 MERGED from [:firebase_core] F:\flutter_test\flutter_application_2\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:google_maps_flutter_android] F:\flutter_test\flutter_application_2\build\google_maps_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_plugin_android_lifecycle] F:\flutter_test\flutter_application_2\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\0631d944a530c07b017ad827a32d350b\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\5d93ab2f2812dcc02a149cabf48676c0\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [com.google.firebase:firebase-auth:21.0.7] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\9b76a9b26f08797c4dc391f55eddd6fd\jetified-firebase-auth-21.0.7\AndroidManifest.xml:17:1-73:12
@@ -137,11 +140,11 @@ INJECTED from F:\flutter_test\flutter_application_2\android\app\src\debug\Androi
 		INJECTED from F:\flutter_test\flutter_application_2\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
+		ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from F:\flutter_test\flutter_application_2\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-37:12
+		ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from F:\flutter_test\flutter_application_2\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\flutter_test\flutter_application_2\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -165,6 +168,8 @@ MERGED from [:google_maps_flutter_android] F:\flutter_test\flutter_application_2
 MERGED from [:google_maps_flutter_android] F:\flutter_test\flutter_application_2\build\google_maps_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] F:\flutter_test\flutter_application_2\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] F:\flutter_test\flutter_application_2\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\0631d944a530c07b017ad827a32d350b\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\0631d944a530c07b017ad827a32d350b\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\5d93ab2f2812dcc02a149cabf48676c0\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
@@ -395,6 +400,14 @@ ADDED from [:firebase_core] F:\flutter_test\flutter_application_2\build\firebase
 		ADDED from [:firebase_core] F:\flutter_test\flutter_application_2\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] F:\flutter_test\flutter_application_2\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher_android] F:\flutter_test\flutter_application_2\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Chamesh\.gradle\caches\transforms-2\files-2.1\5d93ab2f2812dcc02a149cabf48676c0\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required

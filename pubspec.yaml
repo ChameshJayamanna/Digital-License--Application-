@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.6 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -53,6 +53,8 @@ dependencies:
   sticky_grouped_list: ^2.1.0
   anim_search_bar: ^2.0.3
   accordion: ^2.3.0
+  grouped_list: ^5.1.2
+  url_launcher: ^6.1.8
   
 
 dev_dependencies:
@@ -82,7 +84,59 @@ flutter:
    - lib/assets/download.png
    - lib/assets/download.jpg
    - lib/assets/logo4.jpg
-
+   - lib/assets/logo1.png
+   - lib/assets/logo1new2.png
+   - lib/assets/image01.png
+   - lib/assets/image02.png
+   - lib/assets/image03.png
+   - lib/assets/image04.png
+   - lib/assets/image05.png
+   - lib/assets/image06.png
+   - lib/assets/image07.png
+   - lib/assets/image08.png
+   - lib/assets/image09.png
+   - lib/assets/image10.png
+   - lib/assets/image11.png
+   - lib/assets/image12.png
+   - lib/assets/image13.png
+   - lib/assets/image14.png
+   - lib/assets/image15.png
+   - lib/assets/image16.png
+   - lib/assets/image17.png
+   - lib/assets/image18.png
+   - lib/assets/image19.png
+   - lib/assets/image20.png
+   - lib/assets/image21.png
+   - lib/assets/image22.png
+   - lib/assets/image23.png
+   - lib/assets/image24.png
+   - lib/assets/image25.png
+   - lib/assets/image26.png
+   - lib/assets/image27.png
+   - lib/assets/image28.png
+   - lib/assets/image29.png
+   - lib/assets/image30.png
+   - lib/assets/image31.png
+   - lib/assets/image32.png
+   - lib/assets/image33.png
+   - lib/assets/image34.png
+   - lib/assets/image35.png
+   - lib/assets/image36.png
+   - lib/assets/image37.png
+   - lib/assets/image38.png
+   - lib/assets/image39.png
+   - lib/assets/image40.png
+   - lib/assets/image41.png
+   - lib/assets/image42.png
+   - lib/assets/image43.png
+   - lib/assets/image44.png
+   - lib/assets/image45.png
+   - lib/assets/image46.png
+   - lib/assets/image47.png
+   - lib/assets/image48.png
+   - lib/assets/image49.png
+   - lib/assets/image50.png
+   - lib/assets/image51.png
  
 
   # An image asset can refer to one or more resolution-specific "variants", see

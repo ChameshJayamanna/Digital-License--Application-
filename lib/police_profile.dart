@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/profile_page.dart';
-import 'QR.dart';
 
 import 'driver_search.dart';
 import 'history_page.dart';
@@ -177,6 +175,7 @@ class _PoliceprofileState extends State<Policeprofile> {
             style: TextStyle(color: Colors.black87),
           ),
         ),
+        const SizedBox(height: 15),
         ElevatedButton(
             onPressed: () => {
                   //sign out
@@ -192,7 +191,7 @@ class _PoliceprofileState extends State<Policeprofile> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         const Text(
-          'NIC',
+          'National Identity Card number',
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -220,19 +219,6 @@ class _PoliceprofileState extends State<Policeprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.arrow_left_sharp),
-              onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()));
-              },
-            );
-          },
-        ),
         title: Text('Police Profile Page'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
@@ -345,7 +331,7 @@ class _PoliceprofileState extends State<Policeprofile> {
   Future getUser() async {
     if (_auth.currentUser != null) {
       var phoneNumber = _auth.currentUser!.phoneNumber;
-      phoneNumber =
+      phoneNumber = '0' +
           _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
       debugPrint(phoneNumber);
 
@@ -417,7 +403,7 @@ class _PoliceprofileState extends State<Policeprofile> {
         break;
       case 1:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Map()));
+            .push(MaterialPageRoute(builder: (context) => MyApp()));
         break;
       case 2:
         Navigator.of(context)

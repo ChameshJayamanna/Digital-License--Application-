@@ -10,7 +10,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
-  MyApp({Key? key}) : super(key: key);
+  MyApp({super.key});
 
   // This widget is the root of your application.
 
@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
                 print('You have an error! ${snapshot.error.toString()}');
                 return const Text('Something went wrong');
               } else if (snapshot.hasData) {
-                return SplashScreen();
+                return const SplashScreen();
               } else {
-                return SplashScreen();
+                return const SplashScreen();
               }
             }));
   }

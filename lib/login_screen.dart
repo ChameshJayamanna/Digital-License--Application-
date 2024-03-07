@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'dart:math' as math;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -71,7 +70,7 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class LoginScreen extends StatefulWidget {
   //new one
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -139,9 +138,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _formKeyOTP = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final TextEditingController otpController = new TextEditingController();
+  final TextEditingController otpController = TextEditingController();
 
-  final TextEditingController phoneController = new TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   final passwordController = TextEditingController();
   String Password = '';
@@ -161,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => Profilepage(),
+          builder: (BuildContext context) => const Profilepage(),
         ),
         (route) => false,
       );
@@ -179,6 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isRememberMe = false;
 
+  @override
   Widget build(BuildContext context) {
     return isOTPScreen ? returnOTPScreen() : returnLoginScreen();
   }
@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget returnLoginScreen() {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: new AppBar(
+      appBar: AppBar(
         title: const Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
@@ -221,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 80),
-            new Column(
+            Column(
               children: [
                 Form(
                     key: _formKey,
@@ -239,10 +239,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               fillColor: Colors.black,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
+                              contentPadding: const EdgeInsets.only(top: 14),
                               hintText: 'Enter your Phone number',
                               labelText: 'Phone Number',
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.phone,
                               ),
                             ),
@@ -250,6 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (value!.isEmpty) {
                                 return 'Please enter phone number';
                               }
+                              return null;
                             },
                           ),
                         )),
@@ -266,25 +267,25 @@ class _LoginScreenState extends State<LoginScreen> {
                               focusColor: Colors.black,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       color: Color.fromARGB(255, 10, 10, 10))),
-                              contentPadding: EdgeInsets.only(top: 14),
+                              contentPadding: const EdgeInsets.only(top: 14),
                               hintText: 'Enter your password',
                               labelText: 'Password',
                               // errorText: 'Password wrong',
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.lock,
                               ),
                               suffixIcon: passwordController.text.isEmpty
                                   ? Container(width: 0)
                                   : IconButton(
                                       icon: isPasswordVisble
-                                          ? Icon(
+                                          ? const Icon(
                                               Icons.visibility_off_rounded,
                                               color: Color.fromARGB(
                                                   255, 24, 23, 23),
                                             )
-                                          : Icon(
+                                          : const Icon(
                                               Icons.visibility,
                                               color: Color.fromARGB(
                                                   255, 33, 33, 33),
@@ -297,6 +298,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (value!.isEmpty) {
                                 return 'Please enter your password';
                               }
+                              return null;
                             },
                             textInputAction: TextInputAction.done,
                             obscureText: isPasswordVisble,
@@ -308,7 +310,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0),
                                 child: !isLoading
-                                    ? new ElevatedButton(
+                                    ? ElevatedButton(
                                         onPressed: () async {
                                           if (!isLoading) {
                                             if (_formKey.currentState!
@@ -321,7 +323,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Color.fromARGB(
+                                                  const Color.fromARGB(
                                                       235, 0, 123, 168)),
                                         ),
                                         child: Container(
@@ -331,7 +333,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ),
                                             width: 120,
                                             height: 55,
-                                            child: new Row(
+                                            child: const Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
@@ -375,7 +377,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   fontWeight:
                                                       FontWeight.bold))),
                                       InkWell(
-                                        child: Text('Sign up',
+                                        child: const Text('Sign up',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: Colors.black87,
@@ -386,7 +388,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      Driverpolice()))
+                                                      const Driverpolice()))
                                         },
                                       ),
                                     ]))),
@@ -395,8 +397,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         Container(
                           alignment: Alignment.center,
-                          child: new InkWell(
-                              child: new Text(
+                          child: InkWell(
+                              child: const Text(
                                 'Click here for medical bookings.',
                                 style: TextStyle(
                                   fontSize: 15,
@@ -495,8 +497,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget returnOTPScreen() {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: new AppBar(
-          title: Text('OTP Screen'),
+        appBar: AppBar(
+          title: const Text('OTP Screen'),
         ),
         body: ListView(children: [
           Form(
@@ -527,24 +529,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                           initialValue: null,
                           autofocus: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               labelText: 'OTP',
                               labelStyle: TextStyle(color: Colors.black)),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter OTP';
                             }
+                            return null;
                           },
                         ),
                       ))
                     : Container(),
                 !isLoading
                     ? Container(
-                        margin: EdgeInsets.only(top: 40, bottom: 5),
+                        margin: const EdgeInsets.only(top: 40, bottom: 5),
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: new ElevatedButton(
+                            child: ElevatedButton(
                               onPressed: () async {
                                 if (_formKeyOTP.currentState!.validate()) {
                                   // If the form is valid, we want to show a loading Snackbar
@@ -563,53 +566,52 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     .toString()))
                                         .then((user) async => {
                                               //sign in was success
-                                              if (user != null)
-                                                {
-                                                  //store registration details in firestore database
-                                                  setState(() {
-                                                    isLoading = false;
-                                                    isResend = false;
-                                                  }),
-                                                  if (isValidUser)
-                                                    {
-                                                      Navigator
-                                                          .pushAndRemoveUntil(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              Profilepage(), //profile
-                                                        ),
-                                                        (route) => false,
-                                                      )
-                                                    }
-                                                  else if (isValidUser1)
-                                                    {
-                                                      Navigator
-                                                          .pushAndRemoveUntil(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              Foreignprofile(),
-                                                        ),
-                                                        (route) => false,
+                                              {
+                                                //store registration details in firestore database
+                                                setState(() {
+                                                  isLoading = false;
+                                                  isResend = false;
+                                                }),
+                                                if (isValidUser)
+                                                  {
+                                                    Navigator
+                                                        .pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            const Profilepage(), //profile
                                                       ),
-                                                    }
-                                                  else
-                                                    {
-                                                      Navigator
-                                                          .pushAndRemoveUntil(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              Policeprofile(),
-                                                        ),
-                                                        (route) => false,
+                                                      (route) => false,
+                                                    )
+                                                  }
+                                                else if (isValidUser1)
+                                                  {
+                                                    Navigator
+                                                        .pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            const Foreignprofile(),
                                                       ),
-                                                    }
-                                                }
+                                                      (route) => false,
+                                                    ),
+                                                  }
+                                                else
+                                                  {
+                                                    Navigator
+                                                        .pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            const Policeprofile(),
+                                                      ),
+                                                      (route) => false,
+                                                    ),
+                                                  }
+                                              }
                                             })
                                         .catchError((error) => {
                                               setState(() {
@@ -627,15 +629,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                   }
                                 }
                               },
-                              child: new Container(
+                              child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 15.0,
                                   horizontal: 15.0,
                                 ),
-                                child: new Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Submit",
                                         textAlign: TextAlign.center,
@@ -661,11 +663,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ]),
                 isResend
                     ? Container(
-                        margin: EdgeInsets.only(top: 40, bottom: 5),
+                        margin: const EdgeInsets.only(top: 40, bottom: 5),
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: new ElevatedButton(
+                            child: ElevatedButton(
                               onPressed: () async {
                                 setState(() {
                                   isResend = false;
@@ -673,15 +675,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 });
                                 await login();
                               },
-                              child: new Container(
+                              child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 15.0,
                                   horizontal: 15.0,
                                 ),
-                                child: new Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Resend Code",
                                         textAlign: TextAlign.center,
@@ -691,7 +693,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             )))
-                    : Column()
+                    : const Column()
               ],
             ),
           )
@@ -712,7 +714,7 @@ class _LoginScreenState extends State<LoginScreen> {
       isLoading = true;
     });
 
-    var phoneNumber = '+94 ' + phoneController.text.trim();
+    var phoneNumber = '+94 ${phoneController.text.trim()}';
 
     //first we will check if a user with this cell number exists
 
@@ -728,7 +730,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .where('Password', isEqualTo: password)
         .get() //.where('Password', isEqualTo:  password)
         .then((result) async {
-      if (result.docs.length > 0) {
+      if (result.docs.isNotEmpty) {
         isValidUser = true;
       } else {
         // Data is not present in 'Local' collection.
@@ -741,7 +743,7 @@ class _LoginScreenState extends State<LoginScreen> {
             .where('Password', isEqualTo: password)
             .get()
             .then((result) async {
-          if (result.docs.length > 0) {
+          if (result.docs.isNotEmpty) {
             isValidUser1 = true;
           } else {
             List<String> collectionNames = [
@@ -771,7 +773,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   .where('Password', isEqualTo: password)
                   .get()
                   .then((result) async {
-                if (result.docs.length > 0) {
+                if (result.docs.isNotEmpty) {
                   isValidUser2 = true;
                 }
               });
@@ -788,21 +790,20 @@ class _LoginScreenState extends State<LoginScreen> {
         verificationCompleted: (phoneAuthCredential) {
           //auto code complete (not manually)
           _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-                if (user != null)
-                  {
-                    //redirect
-                    setState(() {
-                      isLoading = false;
-                      isOTPScreen = false;
-                    }),
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => Profilepage(),
-                      ),
-                      (route) => false,
-                    )
-                  }
+                {
+                  //redirect
+                  setState(() {
+                    isLoading = false;
+                    isOTPScreen = false;
+                  }),
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const Profilepage(),
+                    ),
+                    (route) => false,
+                  )
+                }
               });
         },
         verificationFailed: (FirebaseAuthException error) {
@@ -824,7 +825,7 @@ class _LoginScreenState extends State<LoginScreen> {
             verificationCode = verificationId;
           });
         },
-        timeout: Duration(seconds: 60),
+        timeout: const Duration(seconds: 60),
       );
       await verifyPhoneNumber;
     } else if (isValidUser1) {
@@ -834,21 +835,20 @@ class _LoginScreenState extends State<LoginScreen> {
         verificationCompleted: (phoneAuthCredential) {
           //auto code complete (not manually)
           _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-                if (user != null)
-                  {
-                    //redirect
-                    setState(() {
-                      isLoading = false;
-                      isOTPScreen = false;
-                    }),
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => Foreignprofile(),
-                      ),
-                      (route) => false,
-                    )
-                  }
+                {
+                  //redirect
+                  setState(() {
+                    isLoading = false;
+                    isOTPScreen = false;
+                  }),
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const Foreignprofile(),
+                    ),
+                    (route) => false,
+                  )
+                }
               });
         },
         verificationFailed: (FirebaseAuthException error) {
@@ -870,7 +870,7 @@ class _LoginScreenState extends State<LoginScreen> {
             verificationCode = verificationId;
           });
         },
-        timeout: Duration(seconds: 60),
+        timeout: const Duration(seconds: 60),
       );
       await verifyPhoneNumber;
     } else if (isValidUser2) {
@@ -880,21 +880,20 @@ class _LoginScreenState extends State<LoginScreen> {
         verificationCompleted: (phoneAuthCredential) {
           //auto code complete (not manually)
           _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-                if (user != null)
-                  {
-                    //redirect
-                    setState(() {
-                      isLoading = false;
-                      isOTPScreen = false;
-                    }),
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => Policeprofile(),
-                      ),
-                      (route) => false,
-                    )
-                  }
+                {
+                  //redirect
+                  setState(() {
+                    isLoading = false;
+                    isOTPScreen = false;
+                  }),
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const Policeprofile(),
+                    ),
+                    (route) => false,
+                  )
+                }
               });
         },
         verificationFailed: (FirebaseAuthException error) {
@@ -916,7 +915,7 @@ class _LoginScreenState extends State<LoginScreen> {
             verificationCode = verificationId;
           });
         },
-        timeout: Duration(seconds: 60),
+        timeout: const Duration(seconds: 60),
       );
       await verifyPhoneNumber;
     } else {

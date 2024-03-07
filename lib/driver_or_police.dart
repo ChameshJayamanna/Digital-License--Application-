@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/login_screen.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_application_2/police_signup.dart';
 //import 'package:flutter/services.dart';
 
 class Driverpolice extends StatefulWidget {
-  const Driverpolice({Key? key}) : super(key: key);
+  const Driverpolice({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -77,16 +76,16 @@ class _DriverpoliceState extends State<Driverpolice> {
               icon: const Icon(Icons.arrow_left_sharp),
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                    MaterialPageRoute(builder: (context) => const LoginScreen()));
               },
             );
           },
         ),
-        title: Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
+        title: const Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -113,7 +112,7 @@ class _DriverpoliceState extends State<Driverpolice> {
                       Color.fromARGB(204, 37, 89, 201),
                       Color.fromARGB(255, 10, 43, 112),
                     ])),*/
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient:
                         LinearGradient(begin: Alignment.topCenter, colors: [
                   Color.fromARGB(255, 73, 161, 205),

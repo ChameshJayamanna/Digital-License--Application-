@@ -8,7 +8,7 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Driversearch extends StatefulWidget {
-  const Driversearch({Key? key}) : super(key: key);
+  const Driversearch({super.key});
 
   @override
   _DriversearchState createState() => _DriversearchState();
@@ -55,12 +55,12 @@ class _DriversearchState extends State<Driversearch> {
               );
             },
           ),
-          title: Text('Driver search'),
+          title: const Text('Driver search'),
           titleTextStyle: const TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           centerTitle: true,
           elevation: 0.5,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -72,13 +72,13 @@ class _DriversearchState extends State<Driversearch> {
         body: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 20,
                 right: 10,
               ),
               child: TextField(
                 controller: seachtf,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Search by NIC',
                 ),
                 onChanged: (value) {
@@ -100,12 +100,12 @@ class _DriversearchState extends State<Driversearch> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Profilepage()));
+                                  builder: (context) => const Profilepage()));
                         } else {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Foreignprofile()));
+                                  builder: (context) => const Foreignprofile()));
                         }
                       },
                     );

@@ -9,7 +9,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class policesignup extends StatefulWidget {
-  const policesignup({Key? key}) : super(key: key);
+  const policesignup({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -22,7 +22,7 @@ final _formKey = GlobalKey<FormState>();
 class _policesignupState extends State<policesignup> {
   final _formKeyOTP = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final TextEditingController otpController = new TextEditingController();
+  final TextEditingController otpController = TextEditingController();
 
   var isLoading = false;
   var isResend = false;
@@ -35,7 +35,7 @@ class _policesignupState extends State<policesignup> {
   String _userPhone = '';
   String _userAddress = '';
   String _userOfAddress = '';
-  String _userRank = '';
+  final String _userRank = '';
   String _password = '';
   String _confirmPassword = '';
 
@@ -119,23 +119,25 @@ class _policesignupState extends State<policesignup> {
 
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("AS"), value: "AS"),
-      DropdownMenuItem(
-          child: Text("Chief Inspector"), value: "Chief Inspector"),
-      DropdownMenuItem(child: Text("DIG"), value: "DIG"),
-      DropdownMenuItem(child: Text("IG"), value: "IG"),
-      DropdownMenuItem(child: Text("Inspector"), value: "Inspector"),
-      DropdownMenuItem(child: Text("PSClass1"), value: "PSClass1"),
-      DropdownMenuItem(child: Text("PSClass2"), value: "PSClass2"),
-      DropdownMenuItem(child: Text("PSClass3"), value: "PSClass3"),
-      DropdownMenuItem(child: Text("PSClass4"), value: "PSClass4"),
-      DropdownMenuItem(child: Text("SDIG"), value: "SDIG"),
-      DropdownMenuItem(child: Text("SI"), value: "SI"),
-      DropdownMenuItem(child: Text("SS"), value: "SS"),
-      DropdownMenuItem(child: Text("Sergeant Major"), value: "Sergeant Major"),
-      DropdownMenuItem(
-          child: Text("Super Intendent"), value: "Super Intendent"),
-      DropdownMenuItem(child: Text("Traffic"), value: "Traffic"),
+      const DropdownMenuItem(value: "AS", child: Text("AS")),
+      const DropdownMenuItem(
+          value: "Chief Inspector",
+          child: Text("Chief Inspector")),
+      const DropdownMenuItem(value: "DIG", child: Text("DIG")),
+      const DropdownMenuItem(value: "IG", child: Text("IG")),
+      const DropdownMenuItem(value: "Inspector", child: Text("Inspector")),
+      const DropdownMenuItem(value: "PSClass1", child: Text("PSClass1")),
+      const DropdownMenuItem(value: "PSClass2", child: Text("PSClass2")),
+      const DropdownMenuItem(value: "PSClass3", child: Text("PSClass3")),
+      const DropdownMenuItem(value: "PSClass4", child: Text("PSClass4")),
+      const DropdownMenuItem(value: "SDIG", child: Text("SDIG")),
+      const DropdownMenuItem(value: "SI", child: Text("SI")),
+      const DropdownMenuItem(value: "SS", child: Text("SS")),
+      const DropdownMenuItem(value: "Sergeant Major", child: Text("Sergeant Major")),
+      const DropdownMenuItem(
+          value: "Super Intendent",
+          child: Text("Super Intendent")),
+      const DropdownMenuItem(value: "Traffic", child: Text("Traffic")),
     ];
     return menuItems;
   }
@@ -166,7 +168,7 @@ class _policesignupState extends State<policesignup> {
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
-        color: Color.fromRGBO(177, 212, 224, 20),
+        color: const Color.fromRGBO(177, 212, 224, 20),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -183,14 +185,14 @@ class _policesignupState extends State<policesignup> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
+                      const Text(
                         "Sign up",
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -200,19 +202,19 @@ class _policesignupState extends State<policesignup> {
                           color: Colors.grey[700],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.account_box,
                             ),
                             hintText: 'Full name',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         validator: (value) {
@@ -228,12 +230,12 @@ class _policesignupState extends State<policesignup> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.account_box,
                             ),
                             hintText: 'NIC',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         validator: (value) {
@@ -256,10 +258,10 @@ class _policesignupState extends State<policesignup> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(Icons.phone_rounded),
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(Icons.phone_rounded),
                             hintText: 'Phone number',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         validator: (value) {
@@ -277,12 +279,12 @@ class _policesignupState extends State<policesignup> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.add_location_alt_outlined,
                             ),
                             hintText: 'Address',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         validator: (value) {
@@ -298,12 +300,12 @@ class _policesignupState extends State<policesignup> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.add_location_alt_outlined,
                             ),
                             hintText: 'Official address',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         validator: (value) {
@@ -320,22 +322,22 @@ class _policesignupState extends State<policesignup> {
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.black38, width: 1),
+                                  const BorderSide(color: Colors.black38, width: 1),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             border: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.black38, width: 1),
+                                  const BorderSide(color: Colors.black38, width: 1),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            prefixIcon: Icon(Icons.article_outlined),
+                            prefixIcon: const Icon(Icons.article_outlined),
                             hintText: 'Rank',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               fontSize: 15,
                               color: Colors.black38,
                             ),
                           ),
-                          dropdownColor: Color.fromARGB(255, 251, 252, 253),
+                          dropdownColor: const Color.fromARGB(255, 251, 252, 253),
                           value: selectedValue,
                           validator: (value) {
                             if (value == null) {
@@ -354,12 +356,12 @@ class _policesignupState extends State<policesignup> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.lock,
                             ),
                             hintText: 'Password',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         obscureText: true,
@@ -382,12 +384,12 @@ class _policesignupState extends State<policesignup> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.lock,
                             ),
                             hintText: 'Confirm password',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black38,
                             )),
                         obscureText: true,
@@ -406,11 +408,11 @@ class _policesignupState extends State<policesignup> {
                       ),
                       const SizedBox(height: 15),
                       Container(
-                          margin: EdgeInsets.only(top: 40, bottom: 5),
+                          margin: const EdgeInsets.only(top: 40, bottom: 5),
                           child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10.0),
-                              child: new ElevatedButton(
+                              child: ElevatedButton(
                                 onPressed: () {
                                   if (!isLoading) {
                                     if (_formKey.currentState!.validate()) {
@@ -423,15 +425,15 @@ class _policesignupState extends State<policesignup> {
                                     }
                                   }
                                 },
-                                child: new Container(
+                                child: Container(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 15.0,
                                     horizontal: 15.0,
                                   ),
-                                  child: new Row(
+                                  child: const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      new Expanded(
+                                      Expanded(
                                         child: Text(
                                           "Next",
                                           textAlign: TextAlign.center,
@@ -453,8 +455,8 @@ class _policesignupState extends State<policesignup> {
   Widget returnOTPScreen() {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: new AppBar(
-          title: Text('OTP Screen'),
+        appBar: AppBar(
+          title: const Text('OTP Screen'),
         ),
         body: ListView(children: [
           Form(
@@ -485,24 +487,25 @@ class _policesignupState extends State<policesignup> {
                           ],
                           initialValue: null,
                           autofocus: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               labelText: 'OTP',
                               labelStyle: TextStyle(color: Colors.black)),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter OTP';
                             }
+                            return null;
                           },
                         ),
                       ))
                     : Container(),
                 !isLoading
                     ? Container(
-                        margin: EdgeInsets.only(top: 40, bottom: 5),
+                        margin: const EdgeInsets.only(top: 40, bottom: 5),
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: new ElevatedButton(
+                            child: ElevatedButton(
                               onPressed: () async {
                                 if (_formKeyOTP.currentState!.validate()) {
                                   // If the form is valid, we want to show a loading Snackbar
@@ -521,57 +524,56 @@ class _policesignupState extends State<policesignup> {
                                                     .toString()))
                                         .then((user) async => {
                                               //sign in was success
-                                              if (user != null)
-                                                {
-                                                  //store registration details in firestore database
-                                                  await _firestore
-                                                      .collection('Police')
-                                                      .doc('Rank')
-                                                      .collection(
-                                                          selectedValue!)
-                                                      .doc(_auth
-                                                          .currentUser!.uid)
-                                                      .set(
-                                                          {
-                                                        "FullName": _userName,
-                                                        "NIC": _userNIC,
-                                                        "PhoneNumber":
-                                                            _userPhone,
-                                                        "Address": _userAddress,
-                                                        "OfficialAddress":
-                                                            _userOfAddress,
-                                                        "Rank": selectedValue,
-                                                        "Password": _password,
-                                                        "ConfirmPassword":
-                                                            _confirmPassword
-                                                      },
-                                                          SetOptions(
-                                                              merge:
-                                                                  true)).then(
-                                                          (value) => {
-                                                                //then move to authorised area
-                                                                setState(() {
-                                                                  isLoading =
-                                                                      false;
-                                                                  isResend =
-                                                                      false;
-                                                                })
-                                                              }),
+                                              {
+                                                //store registration details in firestore database
+                                                await _firestore
+                                                    .collection('Police')
+                                                    .doc('Rank')
+                                                    .collection(
+                                                        selectedValue!)
+                                                    .doc(_auth
+                                                        .currentUser!.uid)
+                                                    .set(
+                                                        {
+                                                      "FullName": _userName,
+                                                      "NIC": _userNIC,
+                                                      "PhoneNumber":
+                                                          _userPhone,
+                                                      "Address": _userAddress,
+                                                      "OfficialAddress":
+                                                          _userOfAddress,
+                                                      "Rank": selectedValue,
+                                                      "Password": _password,
+                                                      "ConfirmPassword":
+                                                          _confirmPassword
+                                                    },
+                                                        SetOptions(
+                                                            merge:
+                                                                true)).then(
+                                                        (value) => {
+                                                              //then move to authorised area
+                                                              setState(() {
+                                                                isLoading =
+                                                                    false;
+                                                                isResend =
+                                                                    false;
+                                                              })
+                                                            }),
 
-                                                  setState(() {
-                                                    isLoading = false;
-                                                    isResend = false;
-                                                  }),
-                                                  Navigator.pushAndRemoveUntil(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          Policeprofile(),
-                                                    ),
-                                                    (route) => false,
-                                                  )
-                                                }
+                                                setState(() {
+                                                  isLoading = false;
+                                                  isResend = false;
+                                                }),
+                                                Navigator.pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        const Policeprofile(),
+                                                  ),
+                                                  (route) => false,
+                                                )
+                                              }
                                             })
                                         .catchError((error) => {
                                               setState(() {
@@ -589,15 +591,15 @@ class _policesignupState extends State<policesignup> {
                                   }
                                 }
                               },
-                              child: new Container(
+                              child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 15.0,
                                   horizontal: 15.0,
                                 ),
-                                child: new Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Submit",
                                         textAlign: TextAlign.center,
@@ -623,11 +625,11 @@ class _policesignupState extends State<policesignup> {
                           ]),
                 isResend
                     ? Container(
-                        margin: EdgeInsets.only(top: 40, bottom: 5),
+                        margin: const EdgeInsets.only(top: 40, bottom: 5),
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: new ElevatedButton(
+                            child: ElevatedButton(
                               onPressed: () async {
                                 setState(() {
                                   isResend = false;
@@ -635,15 +637,15 @@ class _policesignupState extends State<policesignup> {
                                 });
                                 await signUp();
                               },
-                              child: new Container(
+                              child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 15.0,
                                   horizontal: 15.0,
                                 ),
-                                child: new Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Resend Code",
                                         textAlign: TextAlign.center,
@@ -653,7 +655,7 @@ class _policesignupState extends State<policesignup> {
                                 ),
                               ),
                             )))
-                    : Column()
+                    : const Column()
               ],
             ),
           )
@@ -666,57 +668,55 @@ class _policesignupState extends State<policesignup> {
         isLoading = true;
       });
 
-      var phoneNumber = '+94 ' + _userPhone;
+      var phoneNumber = '+94 $_userPhone';
       var verifyPhoneNumber = _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (phoneAuthCredential) {
           //auto code complete (not manually)
           _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-                if (user != null)
-                  {
-                    //store registration details in firestore database
-                    await _firestore
-                        .collection('Police')
-                        .doc('Rank')
-                        .collection(selectedValue!)
-                        .doc(_auth.currentUser!.uid)
-                        .set({
-                          "FullName": _userName,
-                          "NIC": _userNIC,
-                          "PhoneNumber": _userPhone,
-                          "Address": _userAddress,
-                          "OfficialAddress": _userOfAddress,
-                          "Rank": selectedValue,
-                          "Password": _password,
-                          "ConfirmPassword": _confirmPassword
-                        }, SetOptions(merge: true))
-                        .then((value) => {
-                              //then move to authorised area
-                              setState(() {
-                                isLoading = false;
-                                isRegister = false;
-                                isOTPScreen = false;
+                {
+                  //store registration details in firestore database
+                  await _firestore
+                      .collection('Police')
+                      .doc('Rank')
+                      .collection(selectedValue!)
+                      .doc(_auth.currentUser!.uid)
+                      .set({
+                        "FullName": _userName,
+                        "NIC": _userNIC,
+                        "PhoneNumber": _userPhone,
+                        "Address": _userAddress,
+                        "OfficialAddress": _userOfAddress,
+                        "Rank": selectedValue,
+                        "Password": _password,
+                        "ConfirmPassword": _confirmPassword
+                      }, SetOptions(merge: true))
+                      .then((value) => {
+                            //then move to authorised area
+                            setState(() {
+                              isLoading = false;
+                              isRegister = false;
+                              isOTPScreen = false;
 
-                                //navigate to is
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        Policeprofile(),
-                                  ),
-                                  (route) => false,
-                                );
-                              })
+                              //navigate to is
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const Policeprofile(),
+                                ),
+                                (route) => false,
+                              );
                             })
-                        .catchError((onError) => {
-                              debugPrint('Error saving user to db.' +
-                                  onError.toString())
-                            })
-                  }
+                          })
+                      .catchError((onError) => {
+                            debugPrint('Error saving user to db.$onError')
+                          })
+                }
               });
         },
         verificationFailed: (FirebaseAuthException error) {
-          debugPrint('Error logging in' + error.toString());
+          debugPrint('Error logging in$error');
           setState(() {
             isLoading = false;
           });
@@ -733,7 +733,7 @@ class _policesignupState extends State<policesignup> {
             verificationCode = verificationId;
           });
         },
-        timeout: Duration(seconds: 60),
+        timeout: const Duration(seconds: 60),
       );
 
       await verifyPhoneNumber;
@@ -747,15 +747,15 @@ Widget makeInput({label, obsureText = false}) {
     children: [
       Text(
         label,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
       ),
-      SizedBox(
+      const SizedBox(
         height: 5,
       ),
       TextField(
         obscureText: obsureText,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -766,7 +766,7 @@ Widget makeInput({label, obsureText = false}) {
               OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 30,
       )
     ],

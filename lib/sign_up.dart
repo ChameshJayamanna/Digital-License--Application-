@@ -13,6 +13,9 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class sign extends StatefulWidget {
+  const sign({super.key});
+
+  @override
   _signState createState() => _signState();
 }
 
@@ -22,7 +25,7 @@ final _formKey = GlobalKey<FormState>();
 class _signState extends State<sign> {
   final _formKeyOTP = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final TextEditingController otpController = new TextEditingController();
+  final TextEditingController otpController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController dateController1 = TextEditingController();
   TextEditingController dateController2 = TextEditingController();
@@ -205,7 +208,7 @@ class _signState extends State<sign> {
         ),
       ),
       body: Container(
-        color: Color.fromRGBO(177, 212, 224, 20),
+        color: const Color.fromRGBO(177, 212, 224, 20),
         alignment: Alignment.center,
         child: Center(
           child: SingleChildScrollView(
@@ -223,14 +226,14 @@ class _signState extends State<sign> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        const Text(
                           "Sign up",
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
@@ -240,19 +243,19 @@ class _signState extends State<sign> {
                             color: Colors.grey[700],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         TextFormField(
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.account_box,
                               ),
                               hintText: 'Full name',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           validator: (value) {
@@ -268,12 +271,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.account_box,
                               ),
                               hintText: 'NIC',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           validator: (value) {
@@ -298,12 +301,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.phone,
                               ),
                               hintText: 'Phone number',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           validator: (value) {
@@ -321,12 +324,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.add_location_alt_outlined,
                               ),
                               hintText: 'Address',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           validator: (value) {
@@ -344,12 +347,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.calendar_month_outlined,
                               ),
                               hintText: 'Birth date',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           readOnly: true,
@@ -392,12 +395,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.calendar_month_outlined,
                               ),
                               hintText: 'Issued date',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           readOnly: true,
@@ -437,12 +440,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.calendar_month_outlined,
                               ),
                               hintText: 'Expiry date',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           readOnly: true,
@@ -485,12 +488,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.album_outlined,
                               ),
                               hintText: 'Blood group',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           validator: (value) {
@@ -507,12 +510,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.article_outlined,
                               ),
                               hintText: 'Vehicle type',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           validator: (value) {
@@ -531,12 +534,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.lock,
                               ),
                               hintText: 'Password',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           obscureText: true,
@@ -559,12 +562,12 @@ class _signState extends State<sign> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.only(top: 14),
-                              prefixIcon: Icon(
+                              contentPadding: const EdgeInsets.only(top: 14),
+                              prefixIcon: const Icon(
                                 Icons.lock,
                               ),
                               hintText: 'Confirm password',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Colors.black38,
                               )),
                           obscureText: true,
@@ -583,11 +586,11 @@ class _signState extends State<sign> {
                         ),
                         const SizedBox(height: 15),
                         Container(
-                            margin: EdgeInsets.only(top: 40, bottom: 5),
+                            margin: const EdgeInsets.only(top: 40, bottom: 5),
                             child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0),
-                                child: new ElevatedButton(
+                                child: ElevatedButton(
                                   onPressed: () {
                                     if (!isLoading) {
                                       if (_formKey.currentState!.validate()) {
@@ -600,16 +603,16 @@ class _signState extends State<sign> {
                                       }
                                     }
                                   },
-                                  child: new Container(
+                                  child: Container(
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 15.0,
                                       horizontal: 15.0,
                                     ),
-                                    child: new Row(
+                                    child: const Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
-                                        new Expanded(
+                                        Expanded(
                                           child: Text(
                                             "Next",
                                             textAlign: TextAlign.center,
@@ -632,8 +635,8 @@ class _signState extends State<sign> {
   Widget returnOTPScreen() {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: new AppBar(
-          title: Text('OTP Screen'),
+        appBar: AppBar(
+          title: const Text('OTP Screen'),
         ),
         body: ListView(children: [
           Form(
@@ -664,24 +667,25 @@ class _signState extends State<sign> {
                           ],
                           initialValue: null,
                           autofocus: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               labelText: 'OTP',
                               labelStyle: TextStyle(color: Colors.black)),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter OTP';
                             }
+                            return null;
                           },
                         ),
                       ))
                     : Container(),
                 !isLoading
                     ? Container(
-                        margin: EdgeInsets.only(top: 40, bottom: 5),
+                        margin: const EdgeInsets.only(top: 40, bottom: 5),
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: new ElevatedButton(
+                            child: ElevatedButton(
                               onPressed: () async {
                                 if (_formKeyOTP.currentState!.validate()) {
                                   // If the form is valid, we want to show a loading Snackbar
@@ -700,65 +704,59 @@ class _signState extends State<sign> {
                                                     .toString()))
                                         .then((user) async => {
                                               //sign in was success
-                                              if (user != null)
-                                                {
-                                                  //store registration details in firestore database
-                                                  await _firestore
-                                                      .collection('Driver')
-                                                      .doc('Nativity')
-                                                      .collection('Local')
-                                                      .doc(_auth
-                                                          .currentUser!.uid)
-                                                      .set(
-                                                          {
-                                                        "FullName": _userName,
-                                                        "NIC": _userNIC,
-                                                        "Phone Number":
-                                                            _userPhone,
-                                                        "Address": _userAddress,
-                                                        "DateOfBirth":
-                                                            dateController.text,
-                                                        "IssuedDate":
-                                                            dateController1
-                                                                .text,
-                                                        "DateofExpiry":
-                                                            dateController2
-                                                                .text,
-                                                        "VehicleType":
-                                                            _userVehicleT,
-                                                        "BloodGroup":
-                                                            _userBloodG,
-                                                        "Password": _password,
-                                                        "ConfirmPassword":
-                                                            _confirmPassword
-                                                      },
-                                                          SetOptions(
-                                                              merge:
-                                                                  true)).then(
-                                                          (value) => {
-                                                                //then move to authorised area
-                                                                setState(() {
-                                                                  isLoading =
-                                                                      false;
-                                                                  isResend =
-                                                                      false;
-                                                                })
-                                                              }),
+                                              {
+                                                //store registration details in firestore database
+                                                await _firestore
+                                                    .collection('Driver')
+                                                    .doc('Nativity')
+                                                    .collection('Local')
+                                                    .doc(_auth.currentUser!.uid)
+                                                    .set(
+                                                        {
+                                                      "FullName": _userName,
+                                                      "NIC": _userNIC,
+                                                      "Phone Number":
+                                                          _userPhone,
+                                                      "Address": _userAddress,
+                                                      "DateOfBirth":
+                                                          dateController.text,
+                                                      "IssuedDate":
+                                                          dateController1.text,
+                                                      "DateofExpiry":
+                                                          dateController2.text,
+                                                      "VehicleType":
+                                                          _userVehicleT,
+                                                      "BloodGroup": _userBloodG,
+                                                      "Password": _password,
+                                                      "ConfirmPassword":
+                                                          _confirmPassword
+                                                    },
+                                                        SetOptions(
+                                                            merge: true)).then(
+                                                        (value) => {
+                                                              //then move to authorised area
+                                                              setState(() {
+                                                                isLoading =
+                                                                    false;
+                                                                isResend =
+                                                                    false;
+                                                              })
+                                                            }),
 
-                                                  setState(() {
-                                                    isLoading = false;
-                                                    isResend = false;
-                                                  }),
-                                                  Navigator.pushAndRemoveUntil(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          Profilepage(),
-                                                    ),
-                                                    (route) => false,
-                                                  )
-                                                }
+                                                setState(() {
+                                                  isLoading = false;
+                                                  isResend = false;
+                                                }),
+                                                Navigator.pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        const Profilepage(),
+                                                  ),
+                                                  (route) => false,
+                                                )
+                                              }
                                             })
                                         .catchError((error) => {
                                               setState(() {
@@ -776,15 +774,15 @@ class _signState extends State<sign> {
                                   }
                                 }
                               },
-                              child: new Container(
+                              child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 15.0,
                                   horizontal: 15.0,
                                 ),
-                                child: new Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Submit",
                                         textAlign: TextAlign.center,
@@ -810,11 +808,11 @@ class _signState extends State<sign> {
                           ]),
                 isResend
                     ? Container(
-                        margin: EdgeInsets.only(top: 40, bottom: 5),
+                        margin: const EdgeInsets.only(top: 40, bottom: 5),
                         child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: new ElevatedButton(
+                            child: ElevatedButton(
                               onPressed: () async {
                                 setState(() {
                                   isResend = false;
@@ -822,15 +820,15 @@ class _signState extends State<sign> {
                                 });
                                 await signUp();
                               },
-                              child: new Container(
+                              child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 15.0,
                                   horizontal: 15.0,
                                 ),
-                                child: new Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Expanded(
+                                    Expanded(
                                       child: Text(
                                         "Resend Code",
                                         textAlign: TextAlign.center,
@@ -840,7 +838,7 @@ class _signState extends State<sign> {
                                 ),
                               ),
                             )))
-                    : Column()
+                    : const Column()
               ],
             ),
           )
@@ -853,60 +851,57 @@ class _signState extends State<sign> {
         isLoading = true;
       });
 
-      var phoneNumber = '+94 ' + _userPhone;
+      var phoneNumber = '+94 $_userPhone';
       var verifyPhoneNumber = _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (phoneAuthCredential) {
           //auto code complete (not manually)
           _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-                if (user != null)
-                  {
-                    //store registration details in firestore database
-                    await _firestore
-                        .collection('Driver')
-                        .doc('Nativity')
-                        .collection('Local')
-                        .doc(_auth.currentUser!.uid)
-                        .set({
-                          "FullName": _userName,
-                          "NIC": _userNIC,
-                          "Phone Number": _userPhone,
-                          "Address": _userAddress,
-                          "DateOfBirth": dateController.text,
-                          "IssuedDate": dateController.text,
-                          "DateofExpiry": dateController2.text,
-                          "VehicleType": _userVehicleT,
-                          "BloodGroup": _userBloodG,
-                          "Password": _password,
-                          "ConfirmPassword": _confirmPassword
-                        }, SetOptions(merge: true))
-                        .then((value) => {
-                              //then move to authorised area
-                              setState(() {
-                                isLoading = false;
-                                isRegister = false;
-                                isOTPScreen = false;
+                {
+                  //store registration details in firestore database
+                  await _firestore
+                      .collection('Driver')
+                      .doc('Nativity')
+                      .collection('Local')
+                      .doc(_auth.currentUser!.uid)
+                      .set({
+                        "FullName": _userName,
+                        "NIC": _userNIC,
+                        "Phone Number": _userPhone,
+                        "Address": _userAddress,
+                        "DateOfBirth": dateController.text,
+                        "IssuedDate": dateController.text,
+                        "DateofExpiry": dateController2.text,
+                        "VehicleType": _userVehicleT,
+                        "BloodGroup": _userBloodG,
+                        "Password": _password,
+                        "ConfirmPassword": _confirmPassword
+                      }, SetOptions(merge: true))
+                      .then((value) => {
+                            //then move to authorised area
+                            setState(() {
+                              isLoading = false;
+                              isRegister = false;
+                              isOTPScreen = false;
 
-                                //navigate to is
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        Profilepage(),
-                                  ),
-                                  (route) => false,
-                                );
-                              })
+                              //navigate to is
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const Profilepage(),
+                                ),
+                                (route) => false,
+                              );
                             })
-                        .catchError((onError) => {
-                              debugPrint('Error saving user to db.' +
-                                  onError.toString())
-                            })
-                  }
+                          })
+                      .catchError((onError) =>
+                          {debugPrint('Error saving user to db.$onError')})
+                }
               });
         },
         verificationFailed: (FirebaseAuthException error) {
-          debugPrint('Error logging in' + error.toString());
+          debugPrint('Error logging in$error');
           setState(() {
             isLoading = false;
           });
@@ -923,7 +918,7 @@ class _signState extends State<sign> {
             verificationCode = verificationId;
           });
         },
-        timeout: Duration(seconds: 60),
+        timeout: const Duration(seconds: 60),
       );
 
       await verifyPhoneNumber;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/roadrules.dart';
 
 class Highwayrules extends StatefulWidget {
-  const Highwayrules({Key? key}) : super(key: key);
+  const Highwayrules({super.key});
 
   @override
   State<Highwayrules> createState() => _HighwayrulesState();
@@ -27,14 +27,14 @@ class _HighwayrulesState extends State<Highwayrules> {
             );
           },
         ),
-        title: Text('Highway Rules'),
+        title: const Text('Highway Rules'),
         titleTextStyle: const TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 20,
             fontWeight: FontWeight.bold),
         centerTitle: true,
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(

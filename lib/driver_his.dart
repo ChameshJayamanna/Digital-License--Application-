@@ -14,14 +14,14 @@ var description = '';
 var phonumber = '';
 
 class Driverhis extends StatefulWidget {
-  const Driverhis({Key? key}) : super(key: key);
+  const Driverhis({super.key});
 
   @override
   State<Driverhis> createState() => _DriverhisState();
 }
 
 class _DriverhisState extends State<Driverhis> {
-  List<Map<String, String>> _records = [];
+  final List<Map<String, String>> _records = [];
   @override
   void initState() {
     getUser();
@@ -31,8 +31,7 @@ class _DriverhisState extends State<Driverhis> {
   Future getUser() async {
     if (_auth.currentUser != null) {
       var phoneNumber = _auth.currentUser!.phoneNumber;
-      phoneNumber = '0' +
-          _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
+      phoneNumber = '0${_auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length)}';
       debugPrint(phoneNumber);
 
       if (_auth.currentUser != null) {
@@ -139,14 +138,14 @@ class _DriverhisState extends State<Driverhis> {
             );
           },
         ),
-        title: Text('History'),
+        title: const Text('History'),
         titleTextStyle: const TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 20,
             fontWeight: FontWeight.bold),
         centerTitle: true,
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(

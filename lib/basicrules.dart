@@ -3,7 +3,7 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:flutter_application_2/roadrules.dart';
 
 class Basicrules extends StatefulWidget {
-  const Basicrules({Key? key}) : super(key: key);
+  const Basicrules({super.key});
 
   @override
   State<Basicrules> createState() => _BasicrulesState();
@@ -13,7 +13,7 @@ const Color backgroundColor = Colors.white10;
 const Color buttonColor = Color.fromARGB(255, 30, 160, 241);
 
 class _BasicrulesState extends State<Basicrules> {
-  List<Map<String, String>> _elements = [
+  final List<Map<String, String>> _elements = [
     {
       'name':
           'When driving a vehicle on a road, the driver and the passenger sitting next to them in the front must both be belted in.',
@@ -84,14 +84,14 @@ class _BasicrulesState extends State<Basicrules> {
             );
           },
         ),
-        title: Text('Basic Rules'),
+        title: const Text('Basic Rules'),
         titleTextStyle: const TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 20,
             fontWeight: FontWeight.bold),
         centerTitle: true,
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -114,18 +114,18 @@ class _BasicrulesState extends State<Basicrules> {
           child: Text(
             value,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 17, color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
         itemBuilder: (ctx, element) {
           return Card(
             elevation: 8.0,
-            margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
-            color: Color.fromARGB(255, 167, 215, 255),
+            margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+            color: const Color.fromARGB(255, 167, 215, 255),
             child: ListTile(
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               title: Text(element['name']),
             ),
           );

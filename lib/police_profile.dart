@@ -19,7 +19,7 @@ var pnumber = '';
 //import 'package:flutter/services.dart';
 
 class Policeprofile extends StatefulWidget {
-  const Policeprofile({Key? key}) : super(key: key);
+  const Policeprofile({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -47,7 +47,7 @@ class _PoliceprofileState extends State<Policeprofile> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(
@@ -56,7 +56,7 @@ class _PoliceprofileState extends State<Policeprofile> {
           height: 60,
           child: Text(
             fullName,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -76,7 +76,7 @@ class _PoliceprofileState extends State<Policeprofile> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(
@@ -85,7 +85,7 @@ class _PoliceprofileState extends State<Policeprofile> {
           height: 60,
           child: Text(
             offaddress,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -105,7 +105,7 @@ class _PoliceprofileState extends State<Policeprofile> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(
@@ -114,7 +114,7 @@ class _PoliceprofileState extends State<Policeprofile> {
           height: 60,
           child: Text(
             rank,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -134,7 +134,7 @@ class _PoliceprofileState extends State<Policeprofile> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(
@@ -143,7 +143,7 @@ class _PoliceprofileState extends State<Policeprofile> {
           height: 60,
           child: Text(
             homaddress,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -163,7 +163,7 @@ class _PoliceprofileState extends State<Policeprofile> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(
@@ -172,7 +172,7 @@ class _PoliceprofileState extends State<Policeprofile> {
           height: 60,
           child: Text(
             pnumber,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
         const SizedBox(height: 15),
@@ -181,7 +181,7 @@ class _PoliceprofileState extends State<Policeprofile> {
                   //sign out
                   signOut()
                 },
-            child: Text('Sign out'))
+            child: const Text('Sign out'))
       ],
     );
   }
@@ -208,7 +208,7 @@ class _PoliceprofileState extends State<Policeprofile> {
           height: 60,
           child: Text(
             nic,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -219,32 +219,32 @@ class _PoliceprofileState extends State<Policeprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Police Profile Page'),
+        title: const Text('Police Profile Page'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         centerTitle: true,
         elevation: 0.5,
         actions: [
           PopupMenuButton(
-            icon: Icon(Icons
+            icon: const Icon(Icons
                 .more_vert_rounded), //don't specify icon if you want 3 dot menu
             color: Colors.blue,
             itemBuilder: (context) => [
-              PopupMenuItem<int>(
+              const PopupMenuItem<int>(
                 value: 0,
                 child: Text(
                   "View driver profile",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              PopupMenuItem<int>(
+              const PopupMenuItem<int>(
                 value: 1,
                 child: Text(
                   "Map",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              PopupMenuItem<int>(
+              const PopupMenuItem<int>(
                 value: 2,
                 child: Text(
                   "Add history",
@@ -255,7 +255,8 @@ class _PoliceprofileState extends State<Policeprofile> {
             onSelected: (item) => SelectedItem(context, item),
           ),
         ],
-        iconTheme: IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -267,37 +268,34 @@ class _PoliceprofileState extends State<Policeprofile> {
       body: SingleChildScrollView(
           child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: 100,
             child: HeaderWidget(100, false, Icons.house_rounded),
           ),
           Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.fromLTRB(10, 15, 20, 20),
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            margin: const EdgeInsets.fromLTRB(10, 15, 20, 20),
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     color: Colors.white,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Colors.black12,
                           blurRadius: 20,
                           offset: Offset(5, 5)),
                     ],
                   ),
-                  child: Icon(Icons.person, size: 80, color: Colors.grey),
+                  child: const Icon(Icons.person, size: 80, color: Colors.grey),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
-                  'ID :' +
-                      (_auth.currentUser!.uid != null
-                          ? _auth.currentUser!.uid
-                          : ''),
-                  style: TextStyle(
+                  'ID :${_auth.currentUser!.uid ?? ''}',
+                  style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
@@ -324,15 +322,17 @@ class _PoliceprofileState extends State<Policeprofile> {
 
   signOut() {
     //redirect
-    _auth.signOut().then((value) => Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => LoginScreen())));
+    _auth.signOut().then((value) => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => const LoginScreen())));
   }
 
   Future getUser() async {
     if (_auth.currentUser != null) {
       var phoneNumber = _auth.currentUser!.phoneNumber;
-      phoneNumber = '0' +
-          _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
+      phoneNumber =
+          '0${_auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length)}';
       debugPrint(phoneNumber);
 
       if (_auth.currentUser != null) {
@@ -363,7 +363,7 @@ class _PoliceprofileState extends State<Policeprofile> {
             //print("docs length: " + result.docs.length.toString());
             //print(result.docs.length);
             if (mounted) {
-              if (result.docs.length > 0) {
+              if (result.docs.isNotEmpty) {
                 setState(() {
                   var data = result.docs[0].data();
                   if (data.containsKey('FullName')) {
@@ -393,21 +393,21 @@ class _PoliceprofileState extends State<Policeprofile> {
     }
   }
 
-  HeaderWidget(int i, bool bool, IconData house_rounded) {}
+  HeaderWidget(int i, bool bool, IconData houseRounded) {}
 
   SelectedItem(BuildContext context, Object? item) {
     switch (item) {
       case 0:
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Driversearch()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const Driversearch()));
         break;
       case 1:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MyApp()));
+            .push(MaterialPageRoute(builder: (context) => const MyApp()));
         break;
       case 2:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => history()));
+            .push(MaterialPageRoute(builder: (context) => const history()));
         break;
     }
   }

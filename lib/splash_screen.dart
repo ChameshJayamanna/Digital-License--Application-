@@ -3,24 +3,27 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => InitState();
 }
 
 class InitState extends State<SplashScreen> {
+  @override
   void initState() {
     super.initState();
     startTimer();
   }
 
   startTimer() async {
-    var duration = Duration(seconds: 7);
+    var duration = const Duration(seconds: 7);
     return Timer(duration, route);
   }
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 
   @override
@@ -32,7 +35,7 @@ class InitState extends State<SplashScreen> {
     return Scaffold(
         body: Stack(children: [
       Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: Color.fromARGB(204, 37, 89, 201),
             gradient: LinearGradient(colors: [
               Color.fromARGB(255, 13, 148, 215),
@@ -53,13 +56,13 @@ class InitState extends State<SplashScreen> {
               ),
             ),
             Container(
-                child: Text("More than just a DIGITAL",
+                child: const Text("More than just a DIGITAL",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.w500))),
-            Padding(padding: EdgeInsets.only(top: 20)),
-            CircularProgressIndicator(
+            const Padding(padding: EdgeInsets.only(top: 20)),
+            const CircularProgressIndicator(
               backgroundColor: Colors.white,
               strokeWidth: 1,
             )

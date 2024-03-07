@@ -3,7 +3,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _MapScreenState extends State<MapScreen> {
 
   String googleAPiKey = "AIzaSyDrUFw9y8L_d4tPjD7W32ZPrdQM99L2gEw";
 
-  Set<Marker> markers = Set(); //markers for google map
+  Set<Marker> markers = {}; //markers for google map
   Map<PolylineId, Polyline> polylines = {};
   static const _initialCameraPosition = CameraPosition(
     target: LatLng(6.8213806784508435, 79.89051870897487),
@@ -42,8 +42,8 @@ class _MapScreenState extends State<MapScreen> {
 
   GoogleMapController? _googleMapController;
 
-  late Marker? _origin = null;
-  late Marker? _destination = null;
+  late Marker? _origin;
+  late Marker? _destination;
 
   @override
   void dispose() {
@@ -90,7 +90,7 @@ class _MapScreenState extends State<MapScreen> {
               children: <Widget>[
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('confirm location'),
+                  child: const Text('confirm location'),
                 )
               ],
             ),
@@ -112,9 +112,9 @@ class _MapScreenState extends State<MapScreen> {
     );
 
     if (result.points.isNotEmpty) {
-      result.points.forEach((PointLatLng point) {
+      for (var point in result.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
-      });
+      }
     } else {
       print(result.errorMessage);
     }
@@ -122,7 +122,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   addPolyLine(List<LatLng> polylineCoordinates) {
-    PolylineId id = PolylineId("poly");
+    PolylineId id = const PolylineId("poly");
     Polyline polyline = Polyline(
       polylineId: id,
       color: Colors.deepPurpleAccent,

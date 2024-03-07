@@ -19,7 +19,7 @@ var bloodGroup = '';
 var vehicleType = '';
 
 class Profilepage extends StatefulWidget {
-  const Profilepage({Key? key}) : super(key: key);
+  const Profilepage({super.key});
 
   //final String nic;
 
@@ -72,7 +72,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             fullName,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -101,7 +101,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             nic,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -130,7 +130,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             address,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -159,7 +159,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             dateofbirth,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -188,7 +188,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             issuedDate,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -217,7 +217,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             dateofexpiry,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -246,7 +246,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             bloodGroup,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
       ],
@@ -275,7 +275,7 @@ class _ProfilepageState extends State<Profilepage> {
           height: 60,
           child: Text(
             vehicleType,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
           ),
         ),
         const SizedBox(height: 15),
@@ -284,7 +284,7 @@ class _ProfilepageState extends State<Profilepage> {
                   //sign out
                   signOut()
                 },
-            child: Text('Sign out'))
+            child: const Text('Sign out'))
       ],
     );
   }
@@ -335,12 +335,12 @@ class _ProfilepageState extends State<Profilepage> {
             itemBuilder: (context) => [
               const PopupMenuItem<int>(
                 value: 0,
-                child: const Text(
+                child: Text(
                   "Road rules",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              PopupMenuItem<int>(
+              const PopupMenuItem<int>(
                 value: 1,
                 child: Text(
                   "View map",
@@ -353,7 +353,7 @@ class _ProfilepageState extends State<Profilepage> {
         ],
         elevation: 0.5,
         iconTheme: const IconThemeData(
-            color: const Color.fromARGB(255, 253, 252, 252)),
+            color: Color.fromARGB(255, 253, 252, 252)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -365,7 +365,7 @@ class _ProfilepageState extends State<Profilepage> {
       body: SingleChildScrollView(
           child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: 100,
             child: HeaderWidget(100, false, Icons.house_rounded),
           ),
@@ -380,23 +380,20 @@ class _ProfilepageState extends State<Profilepage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     color: const Color.fromARGB(255, 240, 242, 243),
-                    boxShadow: [
-                      const BoxShadow(
+                    boxShadow: const [
+                      BoxShadow(
                           color: Colors.black12,
                           blurRadius: 20,
                           offset: Offset(5, 5)),
                     ],
                   ),
                   child: const Icon(Icons.person,
-                      size: 80, color: const Color.fromARGB(255, 18, 17, 17)),
+                      size: 80, color: Color.fromARGB(255, 18, 17, 17)),
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'ID :' +
-                      (_auth.currentUser!.uid != null
-                          ? _auth.currentUser!.uid
-                          : ''),
-                  style: TextStyle(
+                  'ID :${_auth.currentUser!.uid ?? ''}',
+                  style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
@@ -407,17 +404,17 @@ class _ProfilepageState extends State<Profilepage> {
                     children: [
                       const SizedBox(width: 100),
                       ElevatedButton.icon(
-                        label: Text('View history'),
-                        icon: Icon(Icons.history_rounded),
+                        label: const Text('View history'),
+                        icon: const Icon(Icons.history_rounded),
                         style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(
+                            backgroundColor: const Color.fromARGB(
                                 255, 30, 160, 241), //background color of button
                             //side: BorderSide(width:1, color:Color.fromARGB(255, 0, 0, 0)), //border width and color
                             elevation: 3, //elevation of button
                             shape: RoundedRectangleBorder(
                                 //to set border radius to button
                                 borderRadius: BorderRadius.circular(20)),
-                            padding: EdgeInsets.all(
+                            padding: const EdgeInsets.all(
                                 20) //content padding inside button
                             ),
                         onPressed: () {
@@ -458,8 +455,7 @@ class _ProfilepageState extends State<Profilepage> {
   Future getUser() async {
     if (_auth.currentUser != null) {
       var phoneNumber = _auth.currentUser!.phoneNumber;
-      phoneNumber = '0' +
-          _auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length);
+      phoneNumber = '0${_auth.currentUser!.phoneNumber!.substring(3, phoneNumber!.length)}';
       debugPrint(phoneNumber);
 
       if (_auth.currentUser != null) {
@@ -473,7 +469,7 @@ class _ProfilepageState extends State<Profilepage> {
           //print("docs length: " + result.docs.length.toString());
           //print(result.docs.length);
           if (mounted) {
-            if (result.docs.length > 0) {
+            if (result.docs.isNotEmpty) {
               setState(() {
                 var data = result.docs[0].data();
                 if (data.containsKey('FullName')) {
@@ -511,14 +507,14 @@ class _ProfilepageState extends State<Profilepage> {
   signOut() {
     //redirect
     _auth.signOut().then((value) => Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => LoginScreen())));
+        MaterialPageRoute(builder: (BuildContext context) => const LoginScreen())));
   }
 
   /*void initState() {
     super.initState();
     user = UserPreferences.getUser();
   }*/
-  HeaderWidget(int i, bool bool, IconData house_rounded) {}
+  HeaderWidget(int i, bool bool, IconData houseRounded) {}
 
   void SelectedItem(BuildContext context, item) {
     switch (item) {
@@ -528,7 +524,7 @@ class _ProfilepageState extends State<Profilepage> {
         break;
       case 1:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MapScreen()));
+            .push(MaterialPageRoute(builder: (context) => const MapScreen()));
         break;
     }
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/roadrules.dart';
 
 class Mandatory extends StatefulWidget {
-  const Mandatory({Key? key}) : super(key: key);
+  const Mandatory({super.key});
 
   @override
   State<Mandatory> createState() => _MandatoryState();
@@ -26,14 +26,14 @@ class _MandatoryState extends State<Mandatory> {
             );
           },
         ),
-        title: Text('Mandatory signs'),
+        title: const Text('Mandatory signs'),
         titleTextStyle: const TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 20,
             fontWeight: FontWeight.bold),
         centerTitle: true,
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -44,99 +44,99 @@ class _MandatoryState extends State<Mandatory> {
       ),
       backgroundColor: backgroundColor,
       body: ListView(children: <Widget>[
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image39.png"),
-            title: Text("turn Left"),
+            title: const Text("turn Left"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image40.png"),
-            title: Text("Turn Right"),
+            title: const Text("Turn Right"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image41.png"),
-            title: Text("Straighgt Ahead"),
+            title: const Text("Straighgt Ahead"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image42.png"),
-            title: Text("Turn Left Ahead"),
+            title: const Text("Turn Left Ahead"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image43.png"),
-            title: Text("Turn Right Ahead"),
+            title: const Text("Turn Right Ahead"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image44.png"),
-            title: Text("Pass Left Side"),
+            title: const Text("Pass Left Side"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image45.png"),
-            title: Text("Pass Right Side"),
+            title: const Text("Pass Right Side"),
             dense: false,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Card(
-          color: Color.fromARGB(255, 167, 215, 255),
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+          color: const Color.fromARGB(255, 167, 215, 255),
+          margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
           child: ListTile(
             leading: Image.asset("lib/assets/image46.png"),
-            title: Text("Complusory Roundabout"),
+            title: const Text("Complusory Roundabout"),
             dense: false,
           ),
         ),

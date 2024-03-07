@@ -8,7 +8,7 @@ import 'package:flutter_application_2/basicrules.dart';
 import 'package:flutter_application_2/prohibi.dart';
 
 class Roadrules extends StatefulWidget {
-  const Roadrules({Key? key}) : super(key: key);
+  const Roadrules({super.key});
 
   @override
   State<Roadrules> createState() => _RoadrulesState();
@@ -18,11 +18,11 @@ const Color backgroundColor = Color.fromARGB(224, 18, 18, 18);
 const Color buttonColor = Color.fromARGB(223, 223, 169, 228);
 
 class _RoadrulesState extends State<Roadrules> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _pages = <Widget>[
+    final List<Widget> pages = <Widget>[
       Padding(
         padding: const EdgeInsets.only(left: 10, right: 10, top: 80),
         child: Column(
@@ -41,8 +41,8 @@ class _RoadrulesState extends State<Roadrules> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     color: buttonColor,
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         Icon(
                           Icons.article,
                           size: 40,
@@ -70,8 +70,8 @@ class _RoadrulesState extends State<Roadrules> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     color: buttonColor,
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         Icon(
                           Icons.car_rental,
                           size: 40,
@@ -104,8 +104,8 @@ class _RoadrulesState extends State<Roadrules> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     color: buttonColor,
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         Icon(
                           Icons.block_rounded,
                           size: 40,
@@ -133,8 +133,8 @@ class _RoadrulesState extends State<Roadrules> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     color: buttonColor,
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         Icon(
                           Icons.directions_outlined,
                           size: 40,
@@ -167,8 +167,8 @@ class _RoadrulesState extends State<Roadrules> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     color: buttonColor,
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         Icon(
                           Icons.priority_high_rounded,
                           size: 40,
@@ -196,8 +196,8 @@ class _RoadrulesState extends State<Roadrules> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     color: buttonColor,
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         Icon(
                           Icons.error_sharp,
                           size: 40,
@@ -269,7 +269,7 @@ class _RoadrulesState extends State<Roadrules> {
       body: SafeArea(
         child: IndexedStack(
           index: _selectedIndex,
-          children: _pages,
+          children: pages,
         ),
       ),
     );

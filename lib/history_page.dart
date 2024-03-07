@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class history extends StatefulWidget {
-  const history({Key? key}) : super(key: key);
+  const history({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -13,20 +13,20 @@ class history extends StatefulWidget {
   }
 }
 
-TextEditingController _controller = new TextEditingController();
+TextEditingController _controller = TextEditingController();
 Widget buildgetExpenses() {
   return ListView.builder(
     itemBuilder: (context, index) {
       return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
-            border: new Border.all(
+            border: Border.all(
                 width: 1.0, style: BorderStyle.solid, color: Colors.white)),
-        margin: EdgeInsets.all(12.0),
+        margin: const EdgeInsets.all(12.0),
         child: ListTile(
           onTap: () {},
           trailing: IconButton(
-            icon: Icon(Icons.arrow_drop_down_circle_sharp),
+            icon: const Icon(Icons.arrow_drop_down_circle_sharp),
             color: Theme.of(context).primaryColorLight,
             onPressed: () {},
           ),
@@ -41,9 +41,9 @@ class _historyState extends State<history> {
 
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("LOW"), value: "LOW"),
-      DropdownMenuItem(child: Text("MEDIUM"), value: "MEDIUM"),
-      DropdownMenuItem(child: Text("HIGH"), value: "HIGH"),
+      const DropdownMenuItem(value: "LOW", child: Text("LOW")),
+      const DropdownMenuItem(value: "MEDIUM", child: Text("MEDIUM")),
+      const DropdownMenuItem(value: "HIGH", child: Text("HIGH")),
     ];
     return menuItems;
   }
@@ -120,12 +120,12 @@ class _historyState extends State<history> {
             );
           },
         ),
-        title: Text('History'),
+        title: const Text('History'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         centerTitle: true,
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -150,9 +150,9 @@ class _historyState extends State<history> {
                             onTap: () {
                               Navigator.of(context).pop();
                             },
-                            child: CircleAvatar(
-                              child: Icon(Icons.close),
+                            child: const CircleAvatar(
                               backgroundColor: Colors.red,
+                              child: Icon(Icons.close),
                             ),
                           ),
                         ),
@@ -162,9 +162,9 @@ class _historyState extends State<history> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 child: TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Driver NIC',
                                       labelText: 'Driver NIC',
                                     ),
@@ -180,9 +180,9 @@ class _historyState extends State<history> {
                                     }),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 child: TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Police NIC',
                                       labelText: 'Police NIC',
                                     ),
@@ -198,9 +198,9 @@ class _historyState extends State<history> {
                                     }),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 child: TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Phone Number',
                                       labelText: 'Phone Number',
                                     ),
@@ -218,24 +218,24 @@ class _historyState extends State<history> {
                               DropdownButtonFormField(
                                   decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                           color: Colors.black38, width: 1),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     border: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                           color: Colors.black38, width: 1),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    prefixIcon: Icon(Icons.article_outlined),
+                                    prefixIcon: const Icon(Icons.article_outlined),
                                     hintText: 'SEVERITY',
-                                    hintStyle: TextStyle(
+                                    hintStyle: const TextStyle(
                                       fontSize: 15,
                                       color: Colors.black38,
                                     ),
                                   ),
                                   dropdownColor:
-                                      Color.fromARGB(255, 251, 252, 253),
+                                      const Color.fromARGB(255, 251, 252, 253),
                                   value: selectedValue,
                                   validator: (value) {
                                     if (value == null) {
@@ -250,9 +250,9 @@ class _historyState extends State<history> {
                                   },
                                   items: dropdownItems),
                               Padding(
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 child: TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Description',
                                       labelText: 'Description',
                                     ),
@@ -270,7 +270,7 @@ class _historyState extends State<history> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: FloatingActionButton(
-                                  child: Text("Submit"),
+                                  child: const Text("Submit"),
                                   onPressed: () {
                                     setState(() {
                                       _controller.clear();
@@ -280,7 +280,6 @@ class _historyState extends State<history> {
                                       createData();
                                       Navigator.of(context).pop();
                                     }
-                                    ;
                                   },
                                 ),
                               )
@@ -292,7 +291,7 @@ class _historyState extends State<history> {
                   );
                 });
           },
-          child: Icon(Icons.add)),
+          child: const Icon(Icons.add)),
     );
   }
 }
@@ -303,12 +302,12 @@ void getExpenses() {
       return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
-            border: new Border.all(
+            border: Border.all(
                 width: 1.0, style: BorderStyle.solid, color: Colors.white)),
-        margin: EdgeInsets.all(12.0),
+        margin: const EdgeInsets.all(12.0),
         child: ListTile(
           trailing: IconButton(
-            icon: Icon(Icons.arrow_drop_down_circle_sharp),
+            icon: const Icon(Icons.arrow_drop_down_circle_sharp),
             color: Theme.of(context).primaryColorLight,
             onPressed: () {},
           ),

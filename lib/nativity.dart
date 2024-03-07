@@ -7,7 +7,7 @@ import 'package:flutter_application_2/sign_up.dart';
 //import 'package:flutter/services.dart';
 
 class Nativity extends StatefulWidget {
-  const Nativity({Key? key}) : super(key: key);
+  const Nativity({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -24,7 +24,7 @@ class _Nativity extends State<Nativity> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => sign()));
+                context, MaterialPageRoute(builder: (context) => const sign()));
           },
           // padding:const EdgeInsets.all(15),
           style: ButtonStyle(
@@ -46,7 +46,7 @@ class _Nativity extends State<Nativity> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => foreign()));
+                context, MaterialPageRoute(builder: (context) => const foreign()));
           },
           // padding:const EdgeInsets.all(15),
           style: ButtonStyle(
@@ -77,11 +77,11 @@ class _Nativity extends State<Nativity> {
             );
           },
         ),
-        title: Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
+        title: const Text('DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA'),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 12.5, fontWeight: FontWeight.bold),
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 253, 252, 252)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -108,7 +108,7 @@ class _Nativity extends State<Nativity> {
                       Color.fromARGB(255, 10, 43, 112),
                     ])),*/
                 //color:Color.fromARGB(235, 87, 169, 231),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient:
                         LinearGradient(begin: Alignment.topCenter, colors: [
                   Color.fromARGB(255, 73, 161, 205),
